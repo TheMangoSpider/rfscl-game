@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b56i0q2h2jc4n"]
+
+[ext_resource type="Script" uid="uid://bygmro880yy4q" path="res://Assets/Scripts/player.gd" id="1_6cd4h"]
+[ext_resource type="PackedScene" uid="uid://y3psxka05dcu" path="res://Assets/Models/disguise-glasses.glb" id="2_7dd06"]
+[ext_resource type="Script" uid="uid://ox87u24ytvtm" path="res://Assets/Scripts/fisher.gd" id="3_38rej"]
+[ext_resource type="Resource" uid="uid://xobpgxiimsb2" path="res://Assets/fisher.tres" id="4_t1xgp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6cd4h"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7dd06"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1461998413]
+collision_layer = 2
+script = ExtResource("1_6cd4h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=573363016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_6cd4h")
+
+[node name="WorldModel" type="Node3D" parent="." unique_id=703469457]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldModel" unique_id=1323952834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_7dd06")
+
+[node name="disguise-glasses" parent="WorldModel" unique_id=1866897092 instance=ExtResource("2_7dd06")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, 1.5181895, -0.1228587)
+
+[node name="Head" type="Node3D" parent="." unique_id=425404819]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=427987213]
+unique_name_in_owner = true
+cull_mask = 1048573
+
+[node name="Role" type="Node3D" parent="." unique_id=1831538631]
+script = ExtResource("3_38rej")
+spear_tool = ExtResource("4_t1xgp")
+
+[node name="Tool" type="Node3D" parent="Role" unique_id=1218978356]

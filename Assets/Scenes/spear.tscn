@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ddlenbxsle44w"]
+
+[ext_resource type="Script" uid="uid://b855ytck8t3qy" path="res://Assets/Scripts/spear_projectile.gd" id="1_v1bhm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v1bhm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1bhm"]
+size = Vector3(0.27001953, 2.1327972, 0.27026367)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v1bhm"]
+
+[node name="Spear" type="RigidBody3D" unique_id=362489752]
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_v1bhm")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_v1bhm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1229700561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075683594, 1.0301743, 0.005004883)
+shape = SubResource("BoxShape3D_v1bhm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=480655195]
+transform = Transform3D(0.11554083, 0, 0, 0, 1, 0, 0, 0, 0.15801786, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_v1bhm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
