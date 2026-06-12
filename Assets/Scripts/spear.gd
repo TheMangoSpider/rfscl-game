@@ -8,17 +8,19 @@ extends Tool
 var is_charging := false
 var charge_time := 0.0
 
+var is_projectile := true
+
 func _process(delta: float) -> void:
 	if is_charging:
 		charge_time = min(charge_time + delta, max_charge_time)
 
-func use(target: Object):
+func use():
 	is_charging = true
 	charge_time = 0.0
 
 func release(spawn_parent: Node, origin: Vector3, direction: Vector3, charge_time: float) -> void:
 	var force = lerp(min_throw_force, max_throw_force, charge_time / max_charge_time)
-	var spear_instance = spear_scene.instantiate()
+	var spear_instance = tool_scene.instantiate()
 	spear_instance.global_position = origin
 	spear_instance.launch(direction * force)
 	spawn_parent.add_child(spear_instance)

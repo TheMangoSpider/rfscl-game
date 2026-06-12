@@ -8,6 +8,7 @@ var is_charging := false
 
 func _ready() -> void:
 	tools.append(spear_tool)
+	equip_tool(tools[active_tool])
 
 func _process(delta: float) -> void:
 	if is_charging:
@@ -25,5 +26,5 @@ func _unhandled_input(event):
 				get_tree().current_scene,
 				%Camera3D.global_position,
 				-%Camera3D.global_basis.z,
-				charge_time              # pass it in
+				charge_time     
 			)

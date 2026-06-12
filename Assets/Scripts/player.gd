@@ -54,9 +54,6 @@ func _headbob_effect(delta):
 		0
 	)
 
-func _process(delta):
-	pass
-
 func _handle_air_physics(delta) -> void:
 	self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 	
@@ -102,5 +99,5 @@ func _physics_process(delta):
 		_handle_ground_physics(delta)
 	else:
 		_handle_air_physics(delta)
-	print(velocity)
+	#print(velocity)
 	move_and_slide()

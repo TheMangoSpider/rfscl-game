@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PickaxeTool" format=3 uid="uid://ci1peiawv0spd"]
+
+[ext_resource type="Script" uid="uid://bsntar5jq8sec" path="res://Assets/Scripts/pickaxe.gd" id="1_5fewm"]
+[ext_resource type="PackedScene" uid="uid://dut5etu1mff3e" path="res://Assets/Scenes/pickaxe.tscn" id="2_p11bi"]
+
+[resource]
+script = ExtResource("1_5fewm")
+tool_scene = ExtResource("2_p11bi")
+metadata/_custom_type_script = "uid://bsntar5jq8sec"

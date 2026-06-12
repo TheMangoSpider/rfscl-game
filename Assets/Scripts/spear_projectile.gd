@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_node("Interactable"):
-		body.get_node("Interactable").interact(null)  # hit a fish
+		body.get_node("Interactable").interact(null)  # for future fish detection
 	freeze = true               
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
