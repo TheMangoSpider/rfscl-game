@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://cw3w2rxysrrsl" path="res://addons/JehenoSimpleFirstPersonController/Map/struture_material.tres" id="2_u126m"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://addons/JehenoSimpleFirstPersonController/Map/structure_material_2.tres" id="2_wvi4p"]
 [ext_resource type="PackedScene" uid="uid://b56i0q2h2jc4n" path="res://Assets/Scenes/player.tscn" id="3_5080c"]
+[ext_resource type="PackedScene" uid="uid://cn1lwjj5wevs4" path="res://Assets/Scenes/water.tscn" id="4_bxpsk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -150,5 +151,27 @@ radial_segments = 32
 rings = 12
 material = ExtResource("2_wvi4p")
 
-[node name="Player" parent="." unique_id=1461998413 instance=ExtResource("3_5080c")]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map" unique_id=1059243431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.191063, -11.036865, -54.83191)
+use_collision = true
+collision_mask = 2
+size = Vector3(90, 1, 86)
+material = ExtResource("2_u126m")
+
+[node name="Player" parent="." unique_id=1461998413 node_paths=PackedStringArray("underwater") groups=["Player"] instance=ExtResource("3_5080c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.22624, 0, 0)
+underwater = NodePath("../ColorRect")
+
+[node name="Water" parent="." unique_id=1602249835 node_paths=PackedStringArray("underwater") instance=ExtResource("4_bxpsk")]
+transform = Transform3D(47.04936, 0, 0, 0, 1, 0, 0, 0, 28.007751, 18.602448, 0, -73.124725)
+underwater = NodePath("../ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1181400662]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.18431373, 0.27058825, 0.69411767, 0.5372549)

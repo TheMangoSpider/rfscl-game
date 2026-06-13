@@ -15,6 +15,9 @@ var headbob_time := 0.0
 @export var ground_decel := 7.0
 @export var ground_friction := 3.5
 
+@export var swim_up_speed := 8.0
+@export var underwater_gravity := 0.2
+
 #Air vars that prob need to be tweaked to get it right
 @export var air_cap := 0.85 #if higher can surf steeper ramps (btw surfing not implmented yet cause I dont really think its necessary atm)
 @export var air_accel := 800.0
@@ -23,6 +26,8 @@ var headbob_time := 0.0
 @export var uncapped_speed := true
 @export var uncapped_ground_accel := 11.0
 @export var uncapped_air_accel := 15.0
+
+@export var underwater: ColorRect
 
 var wish_dir := Vector3.ZERO
 
@@ -89,15 +94,40 @@ func _handle_ground_physics(delta) -> void:
 	
 	_headbob_effect(delta)
 
+func _handle_underwater_physics(delta) -> void:
+	#horizontal movement copied from air
+	var cur_speed_in_wish_dir = self.velocity.dot(wish_dir)
+	
+	if uncapped_speed:
+		var strafe_factor = 1.0 - max(cur_speed_in_wish_dir / walk_speed, 0.0)
+		var accel_speed = uncapped_air_accel * strafe_factor * delta
+		self.velocity += accel_speed * wish_dir
+	else:
+		var capped_speed = min((air_move_speed * wish_dir).length(), air_cap)
+		var add_speed_till_cap = capped_speed - cur_speed_in_wish_dir
+		if add_speed_till_cap > 0:
+			var accel_speed = air_accel * air_move_speed * delta
+			accel_speed = min(accel_speed, add_speed_till_cap)
+			self.velocity += accel_speed * wish_dir
+	
+	velocity.y = lerp(velocity.y, -2.0, 5.0 * delta)
+	# vertical stuff
+	if Input.is_action_pressed("jump"):
+		velocity.y = lerp(velocity.y, swim_up_speed, 8.0 * delta)
+
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back").normalized()
 	wish_dir = self.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
 	
 	if is_on_floor():
-		if Input.is_action_just_pressed("jump") or (auto_bhop and Input.is_action_pressed("jump")):
+		if Input.is_action_pressed("jump") or (auto_bhop and Input.is_action_pressed("jump")):
 			self.velocity.y = jump_vel
 		_handle_ground_physics(delta)
 	else:
-		_handle_air_physics(delta)
+		if underwater.visible:
+			_handle_underwater_physics(delta)
+		else:
+			_handle_air_physics(delta)
+		
 	#print(velocity)
 	move_and_slide()
