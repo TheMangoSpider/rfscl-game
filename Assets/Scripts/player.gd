@@ -18,12 +18,14 @@ var headbob_time := 0.0
 @export var swim_up_speed := 8.0
 @export var underwater_gravity := 0.2
 
-#Air vars that prob need to be tweaked to get it right
-@export var air_cap := 0.85 #if higher can surf steeper ramps (btw surfing not implmented yet cause I dont really think its necessary atm)
-@export var air_accel := 800.0
+# Air vars that prob need to be tweaked to get it right
+## the vars air cap and accel determine the feel of bhopping/airstrafing. speed caps must
+## be implemented through external systems like friction, drag, or variability in those two
+@export var air_cap := 2.0 # if higher can surf steeper ramps
+@export var air_accel := 2.0
 @export var air_move_speed := 500.0
 
-@export var uncapped_speed := true
+@export var uncapped_speed := false
 @export var uncapped_ground_accel := 11.0
 @export var uncapped_air_accel := 15.0
 
@@ -64,17 +66,12 @@ func _handle_air_physics(delta) -> void:
 	
 	var cur_speed_in_wish_dir = self.velocity.dot(wish_dir)
 	
-	if uncapped_speed:
-		var strafe_factor = 1.0 - max(cur_speed_in_wish_dir / walk_speed, 0.0)
-		var accel_speed = uncapped_air_accel * strafe_factor * delta
+	var capped_speed = min((air_move_speed * wish_dir).length(), air_cap)
+	var add_speed_till_cap = capped_speed - cur_speed_in_wish_dir
+	if add_speed_till_cap > 0:
+		var accel_speed = air_accel * air_move_speed * delta
+		accel_speed = min(accel_speed, add_speed_till_cap)
 		self.velocity += accel_speed * wish_dir
-	else:
-		var capped_speed = min((air_move_speed * wish_dir).length(), air_cap)
-		var add_speed_till_cap = capped_speed - cur_speed_in_wish_dir
-		if add_speed_till_cap > 0:
-			var accel_speed = air_accel * air_move_speed * delta
-			accel_speed = min(accel_speed, add_speed_till_cap)
-			self.velocity += accel_speed * wish_dir
 
 func _handle_ground_physics(delta) -> void:
 	var cur_speed_in_wish_dir = self.velocity.dot(wish_dir)
@@ -91,6 +88,11 @@ func _handle_ground_physics(delta) -> void:
 	if self.velocity.length() > 0:
 		new_speed /= self.velocity.length()
 	self.velocity *= new_speed
+	
+	## apply a reduction in speed when landing a bhop to prevent rapid speed increase (effectively acts as a cap unless you're goated)
+	## could run into issues later if there are other ways to increase speed
+	if self.velocity.length() > 10:
+		velocity *= 0.95
 	
 	_headbob_effect(delta)
 
@@ -110,7 +112,7 @@ func _handle_underwater_physics(delta) -> void:
 			accel_speed = min(accel_speed, add_speed_till_cap)
 			self.velocity += accel_speed * wish_dir
 	
-	velocity.y = lerp(velocity.y, -2.0, 5.0 * delta)
+	velocity.y = lerp(velocity.y, -2.0, 5.0 * delta) ## no shot ts called lerp
 	# vertical stuff
 	if Input.is_action_pressed("jump"):
 		velocity.y = lerp(velocity.y, swim_up_speed, 8.0 * delta)
@@ -128,6 +130,10 @@ func _physics_process(delta):
 			_handle_underwater_physics(delta)
 		else:
 			_handle_air_physics(delta)
-		
-	#print(velocity)
+	
+	## speed label (idk if it should go here or not but this is where your "print(velocity)" was
+	var speed_label: Label = $speed_label
+	var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
+	speed_label.text = "Speed: %d" % horizontal_velocity.length()
+	
 	move_and_slide()
