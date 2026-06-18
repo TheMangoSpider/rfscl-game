@@ -5,8 +5,6 @@ var tools : Array[Tool] = []
 var active_tool : int = 0
 var tool_node: Node3D
 var held_item: Node3D
-var held_pickupable: Pickupable
-var held_drop_scene: PackedScene
 
 func _ready() -> void:
 	pass
@@ -47,22 +45,16 @@ func equip_tool(tool: Tool) -> void:
 	%ToolHolder.add_child(tool_node)
 
 func pickup(pickupable: Pickupable) -> void:
-	print("pickup called, held_item: ", held_item, " held_drop_scene: ", held_drop_scene, " new: ", pickupable)
 	if held_item:
-		var old_drop = held_drop_scene.instantiate()
-		get_tree().current_scene.add_child(old_drop)
-		var player = get_parent()
-		old_drop.global_position = player.global_position + (-player.global_basis.z * 1.0)
-		held_item.queue_free()
+		#drop held item by making its parent the world and not player
+		held_item.reparent(get_tree().current_scene)
+		held_item.drop_visuals(get_parent().global_position + (-get_parent().global_basis.z * 1.0))
 		held_item = null
-		held_drop_scene = null
-		held_pickupable = null
 	if pickupable:
-		held_pickupable = pickupable
-		held_drop_scene = pickupable.drop_scene
-		held_item = pickupable.item_scene.instantiate()
-		%ItemHolder.add_child(held_item)
-		pickupable.queue_free()
+		pickupable.pickup_visuals()
+		pickupable.reparent(%ItemHolder)
+		pickupable.position = Vector3.ZERO
+		held_item = pickupable
 
 func get_raycast_target() -> Pickupable:
 	var space = %Camera3D.get_world_3d().direct_space_state

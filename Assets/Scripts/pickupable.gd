@@ -1,10 +1,14 @@
 class_name Pickupable
-extends Node
+extends RigidBody3D
 
-@export var item_scene: PackedScene
-var drop_scene: PackedScene
-@export var item_name: String
+func pickup_visuals() -> Node3D:
+	freeze = true
+	collision_layer = 0
+	collision_mask = 0
+	return self
 
-func _ready() -> void:
-	if not drop_scene:
-		drop_scene = load(scene_file_path)
+func drop_visuals(drop_position: Vector3):
+	freeze = false
+	collision_layer = 1
+	collision_mask = 1
+	global_position = drop_position
