@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://j6eny3jrbju0"]
+
+[ext_resource type="Script" uid="uid://baeufsp5ebopn" path="res://Assets/Scripts/pickupable.gd" id="1_hgh88"]
+[ext_resource type="PackedScene" uid="uid://dkehj1ewk7c1x" path="res://Assets/Scenes/fish_held.tscn" id="2_gobgt"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_txsja"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ewu08"]
+
+[node name="FishDrop" type="RigidBody3D" unique_id=688257187]
+gravity_scale = 0.0
+script = ExtResource("1_hgh88")
+item_scene = ExtResource("2_gobgt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1541694229]
+mesh = SubResource("SphereMesh_txsja")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2108494740]
+shape = SubResource("SphereShape3D_ewu08")

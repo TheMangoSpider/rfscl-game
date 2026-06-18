@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event):
+	super._unhandled_input(event)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			is_charging = true

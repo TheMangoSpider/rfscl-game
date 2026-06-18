@@ -22,8 +22,8 @@ func _physics_process(delta: float) -> void:
 		basis = target_basis * Basis.from_euler(Vector3(deg_to_rad(90), 0, 0))
 
 func _on_body_entered(body: Node) -> void:
-	if body.has_node("Interactable"):
-		body.get_node("Interactable").interact(null)  # for future fish detection
+	if body is Interactable:
+		body.interact(null)
 	freeze = true               
 	await get_tree().create_timer(0.1).timeout
 	queue_free()

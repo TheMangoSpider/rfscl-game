@@ -9,7 +9,7 @@ albedo_color = Color(0.32941177, 0.2627451, 0.83137256, 1)
 material = SubResource("StandardMaterial3D_muqab")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unmi8"]
-size = Vector3(2.050972, 0.08380127, 2.0264893)
+size = Vector3(2.050972, 16.116077, 2.0264893)
 
 [node name="Water" type="Node3D" unique_id=1602249835]
 script = ExtResource("1_c2nf1")
@@ -18,9 +18,12 @@ script = ExtResource("1_c2nf1")
 mesh = SubResource("PlaneMesh_c2nf1")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2060451587]
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2071777979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011768341, -0.03439331, 0.014831543)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011768341, -8.059431, 0.014831543)
 shape = SubResource("BoxShape3D_unmi8")
 
-[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

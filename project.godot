@@ -19,9 +19,14 @@ config/icon="res://icon.svg"
 
 project/assembly_name="RFSCL Game"
 
-[global_group]
+[file_customization]
 
-Player=""
+folder_colors={
+"res://Assets/Models/": "red",
+"res://Assets/Scenes/": "blue",
+"res://Assets/Scripts/": "green",
+"res://Resources/": "purple"
+}
 
 [input]
 

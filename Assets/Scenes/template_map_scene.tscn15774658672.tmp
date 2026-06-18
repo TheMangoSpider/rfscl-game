@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b56i0q2h2jc4n" path="res://Assets/Scenes/player.tscn" id="3_5080c"]
 [ext_resource type="PackedScene" uid="uid://cn1lwjj5wevs4" path="res://Assets/Scenes/water.tscn" id="4_bxpsk"]
 [ext_resource type="PackedScene" uid="uid://bnqc7mdlu2gxt" path="res://Assets/Scenes/fish.tscn" id="7_cm4kb"]
+[ext_resource type="PackedScene" uid="uid://j6eny3jrbju0" path="res://Assets/Scenes/fish_drop.tscn" id="8_jn1ar"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -194,4 +195,5 @@ transform = Transform3D(268.35822, 0, 0, 0, 57.94575, 0, 0, 0, 407.9344, 0, 0, 0
 underwater = NodePath("../ColorRect")
 
 [node name="Fish" parent="." unique_id=525937421 instance=ExtResource("7_cm4kb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.32344, -9.571605, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.218988, 13.359597, 0)
+fish_drop = ExtResource("8_jn1ar")

@@ -4,6 +4,9 @@ extends Node
 var tools : Array[Tool] = []
 var active_tool : int = 0
 var tool_node: Node3D
+var held_item: Node3D
+var held_pickupable: Pickupable
+var held_drop_scene: PackedScene
 
 func _ready() -> void:
 	pass
@@ -12,7 +15,12 @@ func _process(delta: float) -> void:
 	pass
 
 func _unhandled_input(event):
-	pass
+	if event.is_action_pressed("interact"):
+		var target = get_raycast_target()
+		if target is Pickupable:
+			pickup(target)
+		elif held_item:
+			pickup(null)
 
 func _interact():
 	tools[active_tool].use()
@@ -26,7 +34,6 @@ func swap_tool():
 	equip_tool(tools[active_tool])
 
 func equip_tool(tool: Tool) -> void:
-	print("equipping tool: ", tool)
 	if tool_node:
 		tool_node.queue_free()
 	tool_node = tool.tool_scene.instantiate()
@@ -38,3 +45,32 @@ func equip_tool(tool: Tool) -> void:
 		tool_node.freeze = true
 	
 	%ToolHolder.add_child(tool_node)
+
+func pickup(pickupable: Pickupable) -> void:
+	print("pickup called, held_item: ", held_item, " held_drop_scene: ", held_drop_scene, " new: ", pickupable)
+	if held_item:
+		var old_drop = held_drop_scene.instantiate()
+		get_tree().current_scene.add_child(old_drop)
+		var player = get_parent()
+		old_drop.global_position = player.global_position + (-player.global_basis.z * 1.0)
+		held_item.queue_free()
+		held_item = null
+		held_drop_scene = null
+		held_pickupable = null
+	if pickupable:
+		held_pickupable = pickupable
+		held_drop_scene = pickupable.drop_scene
+		held_item = pickupable.item_scene.instantiate()
+		%ItemHolder.add_child(held_item)
+		pickupable.queue_free()
+
+func get_raycast_target() -> Pickupable:
+	var space = %Camera3D.get_world_3d().direct_space_state
+	var ray = PhysicsRayQueryParameters3D.create(
+		%Camera3D.global_position,
+		%Camera3D.global_position + (-%Camera3D.global_basis.z * 2.0)
+	)
+	var result = space.intersect_ray(ray)
+	if result and result.collider is Pickupable:
+		return result.collider
+	return null

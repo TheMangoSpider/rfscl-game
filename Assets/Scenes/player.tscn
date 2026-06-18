@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bygmro880yy4q" path="res://Assets/Scripts/player.gd" id="1_6cd4h"]
 [ext_resource type="PackedScene" uid="uid://y3psxka05dcu" path="res://Assets/Models/disguise-glasses.glb" id="2_7dd06"]
-[ext_resource type="Script" uid="uid://cv7dgkg26il4n" path="res://Assets/Scripts/engineer.gd" id="3_23lac"]
-[ext_resource type="Resource" uid="uid://b2p7543407r3k" path="res://Resources/engineer.tres" id="4_w3t24"]
-[ext_resource type="Resource" uid="uid://ci1peiawv0spd" path="res://Resources/engineer2.tres" id="5_c3tg1"]
+[ext_resource type="Script" uid="uid://ox87u24ytvtm" path="res://Assets/Scripts/fisher.gd" id="3_t1xgp"]
+[ext_resource type="Resource" uid="uid://xobpgxiimsb2" path="res://Resources/fisher.tres" id="4_23lac"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6cd4h"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t1xgp"]
+height = 2.0551758
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7dd06"]
 
@@ -15,8 +15,8 @@ collision_layer = 2
 script = ExtResource("1_6cd4h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=573363016]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_6cd4h")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9764166, 0)
+shape = SubResource("CapsuleShape3D_t1xgp")
 
 [node name="WorldModel" type="Node3D" parent="." unique_id=703469457]
 unique_name_in_owner = true
@@ -37,10 +37,13 @@ unique_name_in_owner = true
 cull_mask = 1048573
 
 [node name="Role" type="Node3D" parent="." unique_id=1831538631]
-script = ExtResource("3_23lac")
-axe_tool = ExtResource("4_w3t24")
-pickaxe_tool = ExtResource("5_c3tg1")
+script = ExtResource("3_t1xgp")
+spear_tool = ExtResource("4_23lac")
 
 [node name="ToolHolder" type="Node3D" parent="Role" unique_id=1218978356]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8313369, 0.6536449, -0.8934616)
+
+[node name="ItemHolder" type="Node3D" parent="Role" unique_id=442580644]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831, 0.654, -0.893)
