@@ -15,6 +15,6 @@ func swing() -> void:
 	hitbox.monitoring = false 
 
 func _on_hitbox_body_entered(body) -> void:
-	#if body.has_node("Interactable"):
-		#body.get_node("Interactable").interact(tool_resource)
+	if body is Interactable:
+		body.interact(tool_resource)
 	pass

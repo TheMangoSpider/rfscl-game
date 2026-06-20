@@ -61,7 +61,7 @@ _data = {
 [sub_resource type="TorusMesh" id="TorusMesh_xvxu6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prqst"]
-size = Vector3(1, 0.56481934, 1)
+size = Vector3(1.0512695, 0.6934204, 1.8387451)
 
 [node name="Axe" type="Node3D" unique_id=921475951]
 script = ExtResource("1_xvxu6")
@@ -84,5 +84,5 @@ mesh = SubResource("TorusMesh_xvxu6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SwingPivot/Area3D" unique_id=1690608854]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1.8688965, -0.01586914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.025634766, 1.933197, -0.039855957)
 shape = SubResource("BoxShape3D_prqst")

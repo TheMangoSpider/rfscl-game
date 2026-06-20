@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://5bfsi13k42a3"]
+
+[ext_resource type="Script" uid="uid://dcuhmiurk1s2t" path="res://Assets/Scripts/rock.gd" id="1_8sdn8"]
+[ext_resource type="PackedScene" uid="uid://bwivi5drc5kq3" path="res://Assets/Scenes/rock_drop.tscn" id="2_cgkka"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bdnk"]
+albedo_color = Color(0.40069774, 0.40069774, 0.40069768, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8sdn8"]
+material = SubResource("StandardMaterial3D_3bdnk")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3bdnk"]
+height = 1.2103348
+radius = 0.4946289
+
+[node name="Rock" type="RigidBody3D" unique_id=74819402]
+script = ExtResource("1_8sdn8")
+rock_drop = ExtResource("2_cgkka")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2013155011]
+transform = Transform3D(0.9, 0, 0, 0, 0.613, 0, 0, 0, 0.961, 0, 0.61, 0)
+mesh = SubResource("CylinderMesh_8sdn8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1352646952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61668015, 0)
+shape = SubResource("CylinderShape3D_3bdnk")

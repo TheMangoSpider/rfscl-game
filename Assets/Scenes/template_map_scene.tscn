@@ -2,11 +2,12 @@
 
 [ext_resource type="ArrayMesh" uid="uid://dyinnrjwbhcsi" path="res://Assets/Models/Meshes/terrain1mesh.res" id="1_a1fxm"]
 [ext_resource type="Shape3D" uid="uid://dsi21qfmemx5o" path="res://Assets/Models/CollisionShapes/terrain1shape.res" id="2_e7jsf"]
-[ext_resource type="Material" uid="uid://cw3w2rxysrrsl" path="res://addons/JehenoSimpleFirstPersonController/Map/struture_material.tres" id="2_u126m"]
-[ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://addons/JehenoSimpleFirstPersonController/Map/structure_material_2.tres" id="2_wvi4p"]
 [ext_resource type="PackedScene" uid="uid://b56i0q2h2jc4n" path="res://Assets/Scenes/player.tscn" id="3_5080c"]
 [ext_resource type="PackedScene" uid="uid://cn1lwjj5wevs4" path="res://Assets/Scenes/water.tscn" id="4_bxpsk"]
+[ext_resource type="PackedScene" uid="uid://5bfsi13k42a3" path="res://Assets/Scenes/rock.tscn" id="6_jn1ar"]
 [ext_resource type="PackedScene" uid="uid://bnqc7mdlu2gxt" path="res://Assets/Scenes/fish.tscn" id="7_cm4kb"]
+[ext_resource type="PackedScene" uid="uid://bn71diykav5nv" path="res://Assets/Scenes/tree.tscn" id="8_jn1ar"]
+[ext_resource type="PackedScene" uid="uid://frmnhx248c0i" path="res://Assets/Scenes/tree_drop.tscn" id="9_d66lh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,134 +42,8 @@ mesh = ExtResource("1_a1fxm")
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/terrain1" unique_id=17132757]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/terrain1/StaticBody3D" unique_id=1521635135]
+transform = Transform3D(1.0035434, 0, 0, 0, 1.0035434, 0, 0, 0, 1.0035434, 0, 0, 0)
 shape = ExtResource("2_e7jsf")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map" unique_id=722694226]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -56.778557, -1.3577204, -142.54526)
-use_collision = true
-collision_mask = 2
-size = Vector3(90, 1, 86)
-material = ExtResource("2_u126m")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map" unique_id=1817332740]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -77.58747, 0.1829462, -174.709)
-use_collision = true
-collision_mask = 2
-size = Vector3(7.497, 0.5, 7)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map" unique_id=1926894085]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -80.82185, -0.73923635, -171.66902)
-use_collision = true
-collision_mask = 2
-size = Vector3(1, 1.49957, 1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map" unique_id=1331808815]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -80.857796, -0.8684187, -177.6675)
-use_collision = true
-collision_mask = 2
-size = Vector3(1, 1.49957, 1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map" unique_id=812920301]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -74.376625, -0.8947501, -177.70578)
-use_collision = true
-collision_mask = 2
-size = Vector3(1, 1.49957, 1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map" unique_id=1477759396]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -74.34068, -0.7655673, -171.70728)
-use_collision = true
-collision_mask = 2
-size = Vector3(1, 1.49957, 1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGPolygon1" type="CSGPolygon3D" parent="Map" unique_id=1284115999]
-transform = Transform3D(0.9999742, 0.0039345333, 0.01797065, -0.004062663, 0.9997599, 0.06459071, -0.0059040724, -0.021554027, 2.9992507, -75.07224, 0.49114895, -129.71947)
-use_collision = true
-collision_mask = 2
-polygon = PackedVector2Array(-6, -1, 1, 7, 1, -1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGPolygon5" type="CSGPolygon3D" parent="Map" unique_id=843869000]
-transform = Transform3D(0.99997437, 0.003934535, 0.023960872, -0.0040626638, 0.99976, 0.08612098, -0.0059040724, -0.02155403, 3.9990008, -75.12017, 0.31890583, -137.71747)
-use_collision = true
-collision_mask = 2
-polygon = PackedVector2Array(-6, -1, -1, 2, 5, -1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGPolygon6" type="CSGPolygon3D" parent="Map" unique_id=1425737670]
-transform = Transform3D(0.99997437, 0.003934535, 0.023960872, -0.0040626638, 0.99976, 0.08612098, -0.0059040724, -0.02155403, 3.9990008, -75.26393, -0.19781876, -161.71147)
-use_collision = true
-collision_mask = 2
-polygon = PackedVector2Array(-6, -2, -6, 1, 4, 1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGPolygon2" type="CSGPolygon3D" parent="Map" unique_id=55164984]
-transform = Transform3D(0.99997437, 0.003934535, 0.023960872, -0.0040626638, 0.99976, 0.08612098, -0.0059040724, -0.02155403, 3.9990008, -75.01833, 0.6849203, -120.72171)
-use_collision = true
-collision_mask = 2
-polygon = PackedVector2Array(-6, -1, 4, 5, 4, -1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGPolygon3" type="CSGPolygon3D" parent="Map" unique_id=1000557187]
-transform = Transform3D(0.9999742, 0.0039345333, 0.0359413, -0.004062663, 0.9997599, 0.12918141, -0.0059040724, -0.021554027, 5.9985013, -74.952446, 0.9217539, -109.72447)
-use_collision = true
-collision_mask = 2
-polygon = PackedVector2Array(-6, -1, 11, 5, 11, -1)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGPolygon4" type="CSGPolygon3D" parent="Map" unique_id=973731957]
-transform = Transform3D(0.99997437, 0.003934535, 0.023960872, -0.0040626638, 0.99976, 0.08612098, -0.0059040724, -0.02155403, 3.9990008, -71.02238, -0.33109045, -120.72377)
-use_collision = true
-collision_mask = 2
-polygon = PackedVector2Array(0, 0, 0, 6, 8, 6, 1, 5)
-material = ExtResource("2_wvi4p")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Map" unique_id=1235930602]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -31.436806, -2.3938503, -125.12268)
-use_collision = true
-collision_mask = 2
-radius = 4.0
-radial_segments = 64
-rings = 12
-material = ExtResource("2_wvi4p")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map" unique_id=399532544]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -23.720892, 0.63318443, -106.11565)
-use_collision = true
-collision_mask = 2
-radius = 4.0
-sides = 16
-cone = true
-material = ExtResource("2_wvi4p")
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Map" unique_id=268353198]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -19.853163, -2.2907004, -118.22368)
-use_collision = true
-collision_mask = 2
-radius = 4.6
-radial_segments = 6
-rings = 12
-material = ExtResource("2_wvi4p")
-
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="Map" unique_id=1644887048]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -35.65129, -0.5981393, -111.534515)
-use_collision = true
-collision_mask = 2
-radius = 4.4
-radial_segments = 32
-rings = 12
-material = ExtResource("2_wvi4p")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Map" unique_id=1059243431]
-transform = Transform3D(0.99997437, 0.003934535, 0.005990218, -0.0040626638, 0.99976, 0.021530244, -0.0059040724, -0.02155403, 0.9997502, -60.774315, -13.336761, -186.85356)
-use_collision = true
-collision_mask = 2
-size = Vector3(90, 1, 86)
-material = ExtResource("2_u126m")
 
 [node name="Player" parent="." unique_id=1461998413 node_paths=PackedStringArray("underwater") groups=["Player"] instance=ExtResource("3_5080c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.742716, 6.33021, -12.906596)
@@ -195,3 +70,10 @@ underwater = NodePath("../ColorRect")
 
 [node name="Fish" parent="." unique_id=525937421 instance=ExtResource("7_cm4kb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.32344, -9.571605, 0)
+
+[node name="Rock" parent="." unique_id=74819402 instance=ExtResource("6_jn1ar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.804776, -13.468501)
+
+[node name="Tree" parent="." unique_id=121466357 instance=ExtResource("8_jn1ar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.804776, 0)
+tree_drop = ExtResource("9_d66lh")

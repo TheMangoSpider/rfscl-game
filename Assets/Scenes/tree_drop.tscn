@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://frmnhx248c0i"]
+
+[ext_resource type="Script" uid="uid://baeufsp5ebopn" path="res://Assets/Scripts/pickupable.gd" id="1_f13ix"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e02fg"]
+albedo_color = Color(0.4551611, 0.23618406, 0.11275696, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f13ix"]
+material = SubResource("StandardMaterial3D_e02fg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e02fg"]
+size = Vector3(1.62714, 0.61439514, 0.5731201)
+
+[node name="tree_drop" type="RigidBody3D" unique_id=314150267]
+script = ExtResource("1_f13ix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1076372205]
+transform = Transform3D(1.6203676, 0, 0, 0, 0.6074554, 0, 0, 0, 0.5684992, 0, 0.3, 0)
+mesh = SubResource("BoxMesh_f13ix")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1128370353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00029945374, 0.29825592, -0.001159668)
+shape = SubResource("BoxShape3D_e02fg")

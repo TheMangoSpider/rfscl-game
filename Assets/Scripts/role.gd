@@ -63,6 +63,8 @@ func get_raycast_target() -> Pickupable:
 		%Camera3D.global_position + (-%Camera3D.global_basis.z * 2.0)
 	)
 	var result = space.intersect_ray(ray)
+	print("raycast result: ", result)
 	if result and result.collider is Pickupable:
+		print("hit: ", result.collider.name, " is pickupable: ", result.collider is Pickupable)
 		return result.collider
 	return null

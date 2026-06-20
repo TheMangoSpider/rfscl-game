@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bwivi5drc5kq3"]
+
+[ext_resource type="Script" uid="uid://baeufsp5ebopn" path="res://Assets/Scripts/pickupable.gd" id="1_a6uj4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imwhi"]
+albedo_color = Color(0.3328807, 0.33288068, 0.33288068, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_a6uj4"]
+material = SubResource("StandardMaterial3D_imwhi")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_imwhi"]
+radius = 0.38327682
+
+[node name="rock_drop" type="RigidBody3D" unique_id=627086856]
+script = ExtResource("1_a6uj4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1749023803]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.375, 0)
+mesh = SubResource("SphereMesh_a6uj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=944934289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+shape = SubResource("SphereShape3D_imwhi")
