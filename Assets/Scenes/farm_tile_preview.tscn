@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://vhqyo0yrxvtf"]
+
+[ext_resource type="Texture2D" uid="uid://dmgq4lvyecyf4" path="res://Assets/Models/farmland_preview.png" id="1_gchxy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3kep4"]
+size = Vector3(1, 0.1, 1)
+
+[node name="FarmTile" type="Node3D" unique_id=1913982721]
+
+[node name="Decal" type="Decal" parent="." unique_id=1988450986]
+size = Vector3(1, 10, 1)
+texture_albedo = ExtResource("1_gchxy")
+cull_mask = 4
+
+[node name="Area3D" type="Area3D" parent="." unique_id=878285348]
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=405388884]
+shape = SubResource("BoxShape3D_3kep4")

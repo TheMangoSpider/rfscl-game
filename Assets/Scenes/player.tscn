@@ -2,29 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bygmro880yy4q" path="res://Assets/Scripts/player.gd" id="1_6cd4h"]
 [ext_resource type="PackedScene" uid="uid://y3psxka05dcu" path="res://Assets/Models/disguise-glasses.glb" id="2_7dd06"]
-[ext_resource type="Script" uid="uid://cv7dgkg26il4n" path="res://Assets/Scripts/engineer.gd" id="3_38rej"]
-[ext_resource type="Script" uid="uid://b3yr5h34wxyx4" path="res://Assets/Scripts/axe.gd" id="4_c3tg1"]
-[ext_resource type="PackedScene" uid="uid://dgthcsds3hh03" path="res://Assets/Scenes/axe.tscn" id="5_lerqx"]
-[ext_resource type="Script" uid="uid://bsntar5jq8sec" path="res://Assets/Scripts/pickaxe.gd" id="6_jp3cw"]
-[ext_resource type="PackedScene" uid="uid://dut5etu1mff3e" path="res://Assets/Scenes/pickaxe.tscn" id="7_ecf78"]
+[ext_resource type="Script" uid="uid://dh5s3x03orfk8" path="res://Assets/Scripts/farmer.gd" id="3_23lac"]
+[ext_resource type="Resource" uid="uid://bbeqkpy23ulrx" path="res://Resources/farmer.tres" id="4_w3t24"]
+[ext_resource type="PackedScene" uid="uid://cpaxnc6lw1gut" path="res://Assets/Scenes/farm_tile.tscn" id="5_c3tg1"]
+[ext_resource type="PackedScene" uid="uid://vhqyo0yrxvtf" path="res://Assets/Scenes/farm_tile_preview.tscn" id="6_w3t24"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t1xgp"]
 height = 2.0551758
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7dd06"]
 
-[sub_resource type="Resource" id="Resource_23lac"]
-script = ExtResource("4_c3tg1")
-tool_scene = ExtResource("5_lerqx")
-metadata/_custom_type_script = "uid://b3yr5h34wxyx4"
-
-[sub_resource type="Resource" id="Resource_w3t24"]
-script = ExtResource("6_jp3cw")
-tool_scene = ExtResource("7_ecf78")
-metadata/_custom_type_script = "uid://bsntar5jq8sec"
-
 [node name="Player" type="CharacterBody3D" unique_id=1461998413]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_6cd4h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=573363016]
@@ -50,9 +40,10 @@ unique_name_in_owner = true
 cull_mask = 1048573
 
 [node name="Role" type="Node3D" parent="." unique_id=1831538631]
-script = ExtResource("3_38rej")
-axe_tool = SubResource("Resource_23lac")
-pickaxe_tool = SubResource("Resource_w3t24")
+script = ExtResource("3_23lac")
+hoe_tool = ExtResource("4_w3t24")
+farm_tile_scene = ExtResource("5_c3tg1")
+farm_tile_preview_scene = ExtResource("6_w3t24")
 
 [node name="ToolHolder" type="Node3D" parent="Role" unique_id=1218978356]
 unique_name_in_owner = true

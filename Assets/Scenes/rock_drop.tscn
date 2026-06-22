@@ -12,6 +12,7 @@ material = SubResource("StandardMaterial3D_imwhi")
 radius = 0.38327682
 
 [node name="rock_drop" type="RigidBody3D" unique_id=627086856]
+collision_mask = 5
 script = ExtResource("1_a6uj4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1749023803]
