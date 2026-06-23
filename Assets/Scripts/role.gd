@@ -1,16 +1,19 @@
 class_name Role
 extends Node
 
+@export var hand: Hand
+
 var tools : Array[Tool] = []
 var active_tool : int = 0
 var tool_node: Node3D
 var held_item: Node3D
 
 func _ready() -> void:
-	pass
+	tools.append(hand)
 
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("switch"):
+		swap_tool()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):

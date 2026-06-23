@@ -61,7 +61,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_prqst"]
 size = Vector3(0.76153564, 1.1080017, 1)
 
-[node name="Axe" type="Node3D" unique_id=921475951]
+[node name="Knife" type="Node3D" unique_id=921475951]
 script = ExtResource("1_rj4i0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1656293648]

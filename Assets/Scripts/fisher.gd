@@ -8,9 +8,11 @@ var is_charging := false
 
 func _ready() -> void:
 	tools.append(spear_tool)
+	super._ready()
 	equip_tool(tools[active_tool])
 
 func _process(delta: float) -> void:
+	super._process(delta)
 	if is_charging:
 		charge_time = min(charge_time + delta, spear_tool.max_charge_time)
 

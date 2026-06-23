@@ -8,12 +8,8 @@ extends Role
 func _ready() -> void:
 	tools.append(axe_tool)
 	tools.append(pickaxe_tool)
+	super._ready()
 	equip_tool(tools[active_tool])
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("switch"):
-		swap_tool()
-
 
 func _unhandled_input(event):
 	super._unhandled_input(event)
