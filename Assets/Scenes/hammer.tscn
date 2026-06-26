@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://k21iuqf0o3m4"]
+
+[ext_resource type="Script" uid="uid://nij6m1s5q4xb" path="res://Assets/Scripts/hammer_node.gd" id="1_adq7j"]
+
+[sub_resource type="Animation" id="Animation_prqst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwingPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_87wro"]
+resource_name = "axe_swing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwingPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5707964, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_adq7j"]
+resource_name = "hammer_swing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwingPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5707964, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikapu"]
+_data = {
+&"RESET": SubResource("Animation_prqst"),
+&"axe_swing": SubResource("Animation_87wro"),
+&"hammer_swing": SubResource("Animation_adq7j")
+}
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_87wro"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_adq7j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_prqst"]
+size = Vector3(1, 0.6917114, 1)
+
+[node name="Hammer" type="Node3D" unique_id=921475951]
+script = ExtResource("1_adq7j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1656293648]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ikapu")
+
+[node name="SwingPivot" type="Node3D" parent="." unique_id=1037381653]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SwingPivot" unique_id=736894699]
+transform = Transform3D(0.26460522, 0, 0, 0, 1, 0, 0, 0, 0.28862247, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_87wro")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SwingPivot/MeshInstance3D" unique_id=1766079475]
+transform = Transform3D(1.4287871, 0, 0, 0, -4.3711385e-08, -0.7448366, 0, 0.99999976, -3.255784e-08, 0, 0.8765179, 0)
+mesh = SubResource("CylinderMesh_adq7j")
+
+[node name="Area3D" type="Area3D" parent="SwingPivot" unique_id=403820970]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwingPivot/Area3D" unique_id=1690608854]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1.9323425, -0.01586914)
+shape = SubResource("BoxShape3D_prqst")
