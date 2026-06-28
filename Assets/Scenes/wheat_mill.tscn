@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dcxi7dtutdgyi"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_g3rx6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3whpx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ieli"]
+material = SubResource("StandardMaterial3D_3whpx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1jjh"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_te73p"]
+material = SubResource("StandardMaterial3D_u1jjh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_28dqc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7cubr"]
+height = 4.7313232
+radius = 6.5771484
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g3rx6"]
+size = Vector3(1, 0.77685547, 1.0234375)
+
+[node name="wheat_mill" type="StaticBody3D" unique_id=1514472818]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1338139343]
+transform = Transform3D(3.2535558, 0, 0, 0, 3.8605866, 0, 0, 0, 3.2656722, 0, 1.690505, 0)
+mesh = SubResource("TorusMesh_g3rx6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=102791754]
+transform = Transform3D(-0.050736792, 0, 0, 0, -0.32709748, 0, 0, 0, -0.07935625, -0.6738964, -0.27679652, 0.67803496)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1055123176]
+transform = Transform3D(-0.050736792, 0, 0, 0, -0.32709748, 0, 0, 0, -0.07935625, 0.6812998, -0.27679652, -0.7049954)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D" unique_id=866061077]
+transform = Transform3D(2.2177757e-09, 0, -0.07965179, 0, -0.32709748, 0, 0.05054855, 0, 3.4687722e-09, 0.6729508, -0.27679652, 0.6867273)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2048821622]
+transform = Transform3D(2.217776e-09, 0, 0.07965179, 0, 0.32709748, 0, 0.05054855, 0, -3.4687726e-09, -0.66554606, -0.28118443, -0.71895003)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=16320297]
+transform = Transform3D(0.2859429, 0, 0, 0, 0.21060498, 0, 0, 0, 0.25518313, 0.065297104, 0.04538825, -1.0716268)
+mesh = SubResource("PrismMesh_te73p")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MeshInstance3D" unique_id=210576234]
+transform = Transform3D(0.73483324, 0, 0, 0, 1, 0, 0, 0, 0.5233563, 0, -0.11980325, 0)
+mesh = SubResource("PlaneMesh_28dqc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1991341181]
+transform = Transform3D(0.4902023, 0, 0, 0, 0.4902023, 0, 0, 0, 0.4902023, 0.0023149922, 1.1525123, 0.003873134)
+shape = SubResource("CylinderShape3D_7cubr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=134290885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26373172, 1.8559365, -3.413478)
+shape = SubResource("BoxShape3D_g3rx6")

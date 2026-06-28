@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://rujkp37cwyyl"]
+
+[ext_resource type="Material" uid="uid://brr47ba3alh82" path="res://Assets/Materials/wood.tres" id="1_pq4jr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8kdpn"]
+material = ExtResource("1_pq4jr")
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ieli"]
+material = ExtResource("1_pq4jr")
+
+[sub_resource type="PrismMesh" id="PrismMesh_pq4jr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ieli"]
+size = Vector3(10.032944, 0.76960754, 9.94137)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8kdpn"]
+size = Vector3(0.2625885, 1.1037598, 0.17189026)
+
+[node name="wood_mill" type="StaticBody3D" unique_id=1514472818]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1338139343]
+transform = Transform3D(4.9143667, 0, 0, 0, 0.3894849, 0, 0, 0, 4.8622875, 0, 1.282711, 0)
+mesh = SubResource("BoxMesh_8kdpn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=102791754]
+transform = Transform3D(-0.033590287, 0, 0, 0, -3.2422004, 0, 0, 0, -0.053298272, -0.44615299, -1.6966075, 0.45539057)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1055123176]
+transform = Transform3D(-0.033590287, 0, 0, 0, -3.2422004, 0, 0, 0, -0.053298272, 0.45105445, -1.6966075, -0.47349808)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D" unique_id=866061077]
+transform = Transform3D(1.4682782e-09, 0, -0.052733455, 0, -3.2422004, 0, 0.033950068, 0, 2.3297415e-09, 0.445527, -1.6966075, 0.46122864)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2048821622]
+transform = Transform3D(1.4682783e-09, 0, 0.052733455, 0, 3.2422004, 0, 0.033950068, 0, -2.3297417e-09, -0.44062468, -1.7401006, -0.4828705)
+mesh = SubResource("BoxMesh_5ieli")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1619682498]
+transform = Transform3D(0.08346939, 0, 0, 0, 1, 0, 0, 0, 0.20193583, 0, 0.97346854, 0)
+mesh = SubResource("PrismMesh_pq4jr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1991341181]
+transform = Transform3D(0.4902023, 0, 0, 0, 0.4902023, 0, 0, 0, 0.4902023, 0.0023149922, 1.279608, 0.003873134)
+shape = SubResource("BoxShape3D_5ieli")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1344639110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1612096, 0.5377197, -2.3469052)
+shape = SubResource("BoxShape3D_8kdpn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=728913144]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.1977596, 0.5377197, 2.1985939)
+shape = SubResource("BoxShape3D_8kdpn")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=536903478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1829038, 0.5377197, 2.2389996)
+shape = SubResource("BoxShape3D_8kdpn")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=759318974]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.2107642, 0.5377197, -2.2953267)
+shape = SubResource("BoxShape3D_8kdpn")

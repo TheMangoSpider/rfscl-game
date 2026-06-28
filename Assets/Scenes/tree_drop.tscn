@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://frmnhx248c0i"]
 
 [ext_resource type="Script" uid="uid://baeufsp5ebopn" path="res://Assets/Scripts/pickupable.gd" id="1_f13ix"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e02fg"]
-albedo_color = Color(0.4551611, 0.23618406, 0.11275696, 1)
+[ext_resource type="Material" uid="uid://brr47ba3alh82" path="res://Assets/Materials/wood.tres" id="2_q1rsr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_f13ix"]
-material = SubResource("StandardMaterial3D_e02fg")
+material = ExtResource("2_q1rsr")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e02fg"]
 size = Vector3(1.62714, 0.61439514, 0.5731201)

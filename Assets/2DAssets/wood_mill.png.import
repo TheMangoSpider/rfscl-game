@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmgq4lvyecyf4"
-path="res://.godot/imported/farmland_preview.png-f7b24b734b9602df3b9ed16a791b610c.ctex"
+uid="uid://lmx2pgsaw0hh"
+path="res://.godot/imported/wood_mill.png-9778bfabf6e18a7c33a9459633de3285.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Models/farmland_preview.png"
-dest_files=["res://.godot/imported/farmland_preview.png-f7b24b734b9602df3b9ed16a791b610c.ctex"]
+source_file="res://Assets/2DAssets/wood_mill.png"
+dest_files=["res://.godot/imported/wood_mill.png-9778bfabf6e18a7c33a9459633de3285.ctex"]
 
 [params]
 

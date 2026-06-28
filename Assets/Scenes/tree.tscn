@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bn71diykav5nv"]
 
 [ext_resource type="Script" uid="uid://i2ldp66unrmt" path="res://Assets/Scripts/tree.gd" id="1_pj42u"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvbos"]
-albedo_color = Color(0.4481005, 0.2255725, 0.13294977, 1)
+[ext_resource type="PackedScene" uid="uid://frmnhx248c0i" path="res://Assets/Scenes/tree_drop.tscn" id="2_mgld6"]
+[ext_resource type="Material" uid="uid://brr47ba3alh82" path="res://Assets/Materials/wood.tres" id="3_vogv0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pj42u"]
-material = SubResource("StandardMaterial3D_lvbos")
+material = ExtResource("3_vogv0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgld6"]
 albedo_color = Color(5.2943824e-07, 0.6058821, 0.0024540906, 1)
@@ -20,6 +19,7 @@ size = Vector3(2.5527039, 7.1751328, 1.9591064)
 [node name="Tree" type="RigidBody3D" unique_id=1119581286]
 collision_mask = 5
 script = ExtResource("1_pj42u")
+tree_drop = ExtResource("2_mgld6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=223699280]
 transform = Transform3D(1.835, 0, 0, 0, 5, 0, 0, 0, 1.935, 0, 5, 0)

@@ -44,8 +44,13 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event):
 	super._unhandled_input(event)
+	if event.is_action_pressed("menu") and tools[active_tool] is HammerTool:
+		if %BuildingWheel.visible:
+			%BuildingWheel.close()
+		else:
+			%BuildingWheel.open()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
+		if event.pressed and not %BuildingWheel.visible:
 			tools[active_tool].use()
 			if tools[active_tool] is HammerTool:
 				build()
@@ -53,7 +58,11 @@ func _unhandled_input(event):
 func build():
 	if not preview_tile.visible:
 		return
+	var building = %BuildingWheel.selected
+	if not building:
+		return
 	var tile = build_base_scene.instantiate()
+	tile.change_color(building.color)
 	get_tree().current_scene.add_child(tile)
 	tile.global_position = preview_tile.global_position
 

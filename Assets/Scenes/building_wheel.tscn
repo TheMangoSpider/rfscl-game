@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dow2cxcl477n0"]
+
+[ext_resource type="Script" uid="uid://b2u4uuli6i8k0" path="res://Assets/Scripts/building_wheel.gd" id="1_bv280"]
+[ext_resource type="Script" uid="uid://dtocjprk5dekw" path="res://Assets/Scripts/wheel_drawer.gd" id="2_hqbvj"]
+[ext_resource type="Script" uid="uid://b47vdjklhcsqc" path="res://Assets/Scripts/building_data.gd" id="2_jph4n"]
+[ext_resource type="Resource" uid="uid://djyeu0qvqhk1p" path="res://Assets/Resources/Buildings/wood_mill.tres" id="3_x40a8"]
+[ext_resource type="Resource" uid="uid://clhb7ej2sd5wf" path="res://Assets/Resources/Buildings/wheat_mill.tres" id="4_x40a8"]
+
+[node name="BuildingWheel" type="Control" unique_id=1229117648]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bv280")
+buildings = Array[ExtResource("2_jph4n")]([ExtResource("3_x40a8"), ExtResource("4_x40a8")])
+
+[node name="WheelCenter" type="Control" parent="." unique_id=1008725915]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Drawer" type="Control" parent="WheelCenter" unique_id=1698734986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_hqbvj")
+
+[node name="InfoPanel" type="PanelContainer" parent="." unique_id=911661421]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel" unique_id=1408359220]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="InfoPanel/VBoxContainer" unique_id=305443440]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="InfoPanel/VBoxContainer" unique_id=964986720]
+layout_mode = 2
+
+[node name="RecipeContainer" type="HBoxContainer" parent="InfoPanel/VBoxContainer" unique_id=806531710]
+layout_mode = 2
+
+[connection signal="slice_hovered" from="WheelCenter/Drawer" to="." method="_on_drawer_slice_hovered"]

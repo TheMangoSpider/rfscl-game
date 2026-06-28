@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://clhb7ej2sd5wf"]
+
+[ext_resource type="PackedScene" uid="uid://dcxi7dtutdgyi" path="res://Assets/Scenes/wheat_mill.tscn" id="1_4wdr3"]
+[ext_resource type="Texture2D" uid="uid://btvq3prer51y" path="res://Assets/2DAssets/wheat_mill.jpg" id="2_secax"]
+[ext_resource type="Script" uid="uid://b47vdjklhcsqc" path="res://Assets/Scripts/building_data.gd" id="3_n40th"]
+[ext_resource type="PackedScene" uid="uid://bfijndlmls0yk" path="res://Assets/Scenes/building_base.tscn" id="4_0nynd"]
+
+[resource]
+script = ExtResource("3_n40th")
+building_name = "Wheat Mill"
+description = "Turns wheat into grain"
+color = Color(0.50928617, 0.50928617, 0.50928617, 1)
+tub_scene = ExtResource("4_0nynd")
+finished_scene = ExtResource("1_4wdr3")
+icon = ExtResource("2_secax")

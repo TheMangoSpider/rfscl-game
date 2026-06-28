@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cpaxnc6lw1gut"]
 
-[ext_resource type="Texture2D" uid="uid://bav4l0vdu46ce" path="res://Assets/Models/farmland.png" id="1_3kep4"]
+[ext_resource type="Texture2D" uid="uid://bav4l0vdu46ce" path="res://Assets/2DAssets/farmland.png" id="1_3kep4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3kep4"]
 size = Vector3(1, 0.1, 1)

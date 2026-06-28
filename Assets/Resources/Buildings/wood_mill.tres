@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://djyeu0qvqhk1p"]
+
+[ext_resource type="Script" uid="uid://b47vdjklhcsqc" path="res://Assets/Scripts/building_data.gd" id="1_fnjjh"]
+[ext_resource type="PackedScene" uid="uid://rujkp37cwyyl" path="res://Assets/Scenes/wood_mill.tscn" id="1_ghiab"]
+[ext_resource type="PackedScene" uid="uid://bfijndlmls0yk" path="res://Assets/Scenes/building_base.tscn" id="2_ghiab"]
+[ext_resource type="Texture2D" uid="uid://lmx2pgsaw0hh" path="res://Assets/2DAssets/wood_mill.png" id="2_upr3r"]
+
+[resource]
+script = ExtResource("1_fnjjh")
+building_name = "WoodMill"
+description = "Turns wood into planks"
+color = Color(0.5137255, 0.24313726, 0.011764706, 1)
+tub_scene = ExtResource("2_ghiab")
+finished_scene = ExtResource("1_ghiab")
+icon = ExtResource("2_upr3r")

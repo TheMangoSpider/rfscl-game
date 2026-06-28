@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://5bfsi13k42a3" path="res://Assets/Scenes/rock.tscn" id="6_jn1ar"]
 [ext_resource type="PackedScene" uid="uid://bnqc7mdlu2gxt" path="res://Assets/Scenes/fish.tscn" id="7_cm4kb"]
 [ext_resource type="PackedScene" uid="uid://bn71diykav5nv" path="res://Assets/Scenes/tree.tscn" id="8_jn1ar"]
-[ext_resource type="PackedScene" uid="uid://frmnhx248c0i" path="res://Assets/Scenes/tree_drop.tscn" id="9_d66lh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -78,4 +77,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.804776, -13.468501)
 
 [node name="Tree" parent="." unique_id=121466357 instance=ExtResource("8_jn1ar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.804776, 0)
-tree_drop = ExtResource("9_d66lh")
