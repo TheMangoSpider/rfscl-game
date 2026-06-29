@@ -10,6 +10,9 @@ script = ExtResource("1_fnjjh")
 building_name = "WoodMill"
 description = "Turns wood into planks"
 color = Color(0.5137255, 0.24313726, 0.011764706, 1)
+recipe = Dictionary[String, int]({
+"Wood": 2
+})
 tub_scene = ExtResource("2_ghiab")
 finished_scene = ExtResource("1_ghiab")
 icon = ExtResource("2_upr3r")

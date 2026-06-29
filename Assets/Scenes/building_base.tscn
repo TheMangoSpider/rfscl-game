@@ -18,6 +18,9 @@ size = Vector3(9.375916, 0.13101196, 9.802101)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ck25w"]
 size = Vector3(0.25164795, 1.4165039, 4.8011475)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1rd6k"]
+size = Vector3(4.566101, 3.390503, 4.765045)
+
 [node name="building_base" type="StaticBody3D" unique_id=1514472818]
 script = ExtResource("1_ck25w")
 
@@ -65,3 +68,12 @@ shape = SubResource("BoxShape3D_ck25w")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1851704961]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.02534628, 0.7091087, -2.2750764)
 shape = SubResource("BoxShape3D_ck25w")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1552431839]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1347924873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007293701, 1.1952515, 0.0061798096)
+shape = SubResource("BoxShape3D_1rd6k")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

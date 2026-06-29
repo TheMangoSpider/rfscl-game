@@ -65,6 +65,9 @@ func build():
 	tile.change_color(building.color)
 	get_tree().current_scene.add_child(tile)
 	tile.global_position = preview_tile.global_position
+	tile.recipe = building.recipe
+	tile.finished_scene = building.finished_scene
+	tile.init()
 
 func _setup_preview():
 	preview_tile = build_tile_preview_scene.instantiate()

@@ -16,6 +16,7 @@ collision_mask = 5
 gravity_scale = 5.0
 script = ExtResource("1_a6uj4")
 underwater_speed = 0.0
+item_name = "Rock"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1749023803]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.375, 0)

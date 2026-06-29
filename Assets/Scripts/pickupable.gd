@@ -2,6 +2,7 @@ class_name Pickupable
 extends RigidBody3D
 
 @export var underwater_speed := 3.0
+@export var item_name: String
 var underwater := false
 
 func pickup_visuals() -> Node3D:
