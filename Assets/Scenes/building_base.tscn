@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfijndlmls0yk"]
 
-[ext_resource type="Script" uid="uid://ckjsi43ww48wx" path="res://Assets/Scenes/building_base.gd" id="1_ck25w"]
+[ext_resource type="Script" uid="uid://ckjsi43ww48wx" path="res://Assets/Scripts/building_base.gd" id="1_ck25w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ck25w"]
 

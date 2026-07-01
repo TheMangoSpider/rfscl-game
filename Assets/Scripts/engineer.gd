@@ -56,7 +56,7 @@ func _unhandled_input(event):
 				build()
 
 func build():
-	if not preview_tile.visible:
+	if not preview_tile.visible or preview_tile.dont_build:
 		return
 	var building = %BuildingWheel.selected
 	if not building:

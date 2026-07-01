@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://frmnhx248c0i"]
 
 [ext_resource type="Script" uid="uid://baeufsp5ebopn" path="res://Assets/Scripts/pickupable.gd" id="1_f13ix"]
-[ext_resource type="Material" uid="uid://brr47ba3alh82" path="res://Assets/Materials/wood.tres" id="2_q1rsr"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_f13ix"]
-material = ExtResource("2_q1rsr")
+[ext_resource type="BoxMesh" uid="uid://bsd4sfr2o8ttp" path="res://Assets/Models/Meshes/tree_drop.tres" id="2_q1rsr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e02fg"]
 size = Vector3(1.62714, 0.61439514, 0.5731201)
@@ -17,7 +14,7 @@ item_name = "Wood"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1076372205]
 transform = Transform3D(1.6203676, 0, 0, 0, 0.6074554, 0, 0, 0, 0.5684992, 0, 0.3, 0)
-mesh = SubResource("BoxMesh_f13ix")
+mesh = ExtResource("2_q1rsr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1128370353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00029945374, 0.29825592, -0.001159668)

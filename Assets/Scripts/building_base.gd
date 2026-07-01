@@ -1,3 +1,4 @@
+class_name BuildingBase
 extends StaticBody3D
 
 var recipe: Dictionary[String, int]
@@ -37,10 +38,12 @@ func init():
 
 func finish():
 	print("say goodbye")
-	var building = finished_scene.instantiate()
-	building.global_position = global_position
-	get_tree().current_scene.add_child(building)
 	for item in items_inside:
-		item.queue_free()
+		if recipe[item.item_name] > 0:
+			item.queue_free()
+			recipe[item.item_name] -= 1
+	var building = finished_scene.instantiate()
+	building.global_position = self.global_position
+	get_tree().current_scene.add_child(building)
 	items_inside.clear()
 	queue_free()
