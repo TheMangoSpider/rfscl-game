@@ -11,6 +11,10 @@ extends Role
 var preview_tile: Node3D
 
 func _ready() -> void:
+	var id = get_parent().name.to_int()
+	if id > 0 and id != multiplayer.get_unique_id():
+		return
+	
 	tools.append(axe_tool)
 	tools.append(pickaxe_tool)
 	tools.append(hammer_tool)
@@ -19,6 +23,8 @@ func _ready() -> void:
 	call_deferred("_setup_preview")
 
 func _process(delta: float) -> void:
+	if not get_parent().is_multiplayer_authority():
+		return
 	super._process(delta)
 	# tile placement highlight
 	if tools[active_tool] is HammerTool:
@@ -43,6 +49,8 @@ func _process(delta: float) -> void:
 		preview_tile.visible = false
 
 func _unhandled_input(event):
+	if not get_parent().is_multiplayer_authority():
+		return
 	super._unhandled_input(event)
 	if event.is_action_pressed("menu") and tools[active_tool] is HammerTool:
 		if %BuildingWheel.visible:

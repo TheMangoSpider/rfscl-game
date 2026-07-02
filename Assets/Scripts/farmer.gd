@@ -7,12 +7,18 @@ extends Role
 var preview_tile: Node3D
 
 func _ready() -> void:
+	var id = get_parent().name.to_int()
+	if id > 0 and id != multiplayer.get_unique_id():
+		return
+	
 	tools.append(hoe_tool)
 	super._ready()
 	equip_tool(tools[active_tool])
 	call_deferred("_setup_preview")
 
 func _process(delta: float) -> void:
+	if not get_parent().is_multiplayer_authority():
+		return
 	super._process(delta)
 	# tile placement highlight
 	if tools[active_tool] is HoeTool:
@@ -37,6 +43,8 @@ func _process(delta: float) -> void:
 		preview_tile.visible = false
 
 func _unhandled_input(event):
+	if not get_parent().is_multiplayer_authority():
+		return
 	super._unhandled_input(event)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:

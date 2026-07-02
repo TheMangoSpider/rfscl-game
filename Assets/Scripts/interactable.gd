@@ -1,5 +1,5 @@
 class_name Interactable
-extends Node
+extends Node3D
 
 func interact(tool: Tool) -> void:
 	pass  # overriden, interacts diff per object

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+var spawn_position:= Vector3(0, 5, 0)
+
 @export var look_sensitivity : float = 0.006
 @export var jump_vel := 6.0
 @export var auto_bhop := true
@@ -32,7 +34,7 @@ var headbob_time := 0.0
 @export var uncapped_ground_accel := 11.0
 @export var uncapped_air_accel := 15.0
 
-@export var underwater: ColorRect
+@onready var underwater: ColorRect = $ColorRect
 
 var wish_dir := Vector3.ZERO
 
@@ -40,11 +42,34 @@ func _get_move_speed() -> float:
 	return sprint_speed if Input.is_action_pressed("sprint") else walk_speed
 
 func _ready():
-	for child in %WorldModel.find_children("*", "VisualInstance3D"):
-		child.set_layer_mask_value(1, false)
-		child.set_layer_mask_value(2, true)
+	print("=== PLAYER READY ===")
+	print("name: ", name)
+	print("my peer id: ", multiplayer.get_unique_id())
+	print("is authority: ", is_multiplayer_authority())
+	print("synchronizer authority: ", $StateSync.get_multiplayer_authority())
+	print("position: ", position)
+	if is_multiplayer_authority():
+		position = spawn_position
+		%Camera3D.make_current()
+		
+		for child in %WorldModel.find_children("*", "VisualInstance3D"):
+			child.set_layer_mask_value(1, false)
+			child.set_layer_mask_value(2, true)
+	else:
+		$BuildingWheelLayer.visible = false
+		$ColorRect.visible = false
+
+func _enter_tree() -> void:
+	var id = name.to_int()
+	if id > 0:
+		set_multiplayer_authority(id)
+		$StateSync.set_multiplayer_authority(id)
+	print("player ready, name: ", name, " authority: ", get_multiplayer_authority(), " is authority: ", is_multiplayer_authority(), " unique id: ", multiplayer.get_unique_id())
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+	
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
@@ -117,6 +142,15 @@ func _handle_underwater_physics(delta) -> void:
 		velocity.y = lerp(velocity.y, swim_up_speed, 8.0 * delta)
 
 func _physics_process(delta):
+	if is_multiplayer_authority():
+		if Engine.get_physics_frames() % 60 == 0:  # print every second
+			print("my position: ", position)
+	else:
+		if Engine.get_physics_frames() % 60 == 0:
+			print("other player position: ", position)
+	if not is_multiplayer_authority():
+		return
+	
 	var input_dir = Input.get_vector("left", "right", "forward", "back").normalized()
 	wish_dir = self.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
 	
@@ -131,8 +165,8 @@ func _physics_process(delta):
 			_handle_air_physics(delta)
 	
 	## speed label (idk if it should go here or not but this is where your "print(velocity)" was
-	var speed_label: Label = $speed_label
-	var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
-	speed_label.text = "Speed: %d" % horizontal_velocity.length()
+	#var speed_label: Label = $speed_label
+	#var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
+	#speed_label.text = "Speed: %d" % horizontal_velocity.length()
 	
 	move_and_slide()

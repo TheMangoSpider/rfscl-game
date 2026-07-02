@@ -9,13 +9,21 @@ var tool_node: Node3D
 var held_item: Node3D
 
 func _ready() -> void:
+	var id = get_parent().name.to_int()
+	if id > 0 and id != multiplayer.get_unique_id():
+		return
+	
 	tools.append(hand)
 
 func _process(delta: float) -> void:
+	if not get_parent().is_multiplayer_authority():
+		return
 	if Input.is_action_just_pressed("switch"):
 		swap_tool()
 
 func _unhandled_input(event):
+	if not get_parent().is_multiplayer_authority():
+		return
 	if event.is_action_pressed("interact"):
 		var target = get_raycast_target()
 		if target is Pickupable:

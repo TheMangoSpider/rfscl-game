@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d1yua8ujnba54"]
+
+[ext_resource type="Script" uid="uid://cxpqifcdm4aor" path="res://Assets/Scripts/main_menu.gd" id="1_x6jn2"]
+
+[node name="MainMenu" type="Control" unique_id=515840400]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x6jn2")
+
+[node name="Button" type="Button" parent="." unique_id=2110727627]
+layout_mode = 0
+offset_left = 766.0
+offset_top = 198.0
+offset_right = 926.0
+offset_bottom = 324.0
+text = "join"
+
+[node name="Button2" type="Button" parent="." unique_id=382727276]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 174.0
+offset_right = 462.0
+offset_bottom = 332.0
+text = "host"
+
+[connection signal="pressed" from="Button" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_host_pressed"]
