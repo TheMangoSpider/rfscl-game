@@ -8,26 +8,20 @@ var players := {}
 signal player_connected(id: int)
 signal player_disconnected(id: int)
 
-func _ready() -> void:
-	# init EOS
-	var init_options = EOSInitializeOptions.new()
-	init_options.product_name = "RFCL"
-	init_options.product_version = "0.5"
-	EOS.initialize(init_options)
-	
-	var create_options = EOSPlatformCreateOptions.new()
-
 func host():
-	if use_steam:
-		host_steam()
-	else:
-		host_eos()
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_server(PORT, MAX_PLAYERS)
+	multiplayer.multiplayer_peer = peer
+	multiplayer.peer_connected.connect(_on_peer_connected)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	print("hosting on port: ", PORT)
 
-func join(adress: String):
-	if use_steam:
-		join_steam()
-	else:
-		join_eos()
+func join(address: String):
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_client(address, PORT)
+	multiplayer.multiplayer_peer = peer
+	multiplayer.connected_to_server.connect(_on_connected_to_server)
+	print("joining: ", address)
 
 func _on_peer_connected(id: int):
 	print("peer connected: ", id)
@@ -40,9 +34,3 @@ func _on_peer_disconnected(id:int):
 
 func _on_connected_to_server():
 	print("connected to server, my id: ", multiplayer.get_unique_id())
-
-func host_eos() -> void:
-	pass
-
-func host_steam() -> void:
-	pass

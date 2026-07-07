@@ -8,6 +8,10 @@
 
 config_version=5
 
+[GD-Sync]
+
+version="1.0"
+
 [application]
 
 config/name="RFSCL Game"
@@ -18,16 +22,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 NetworkManager="*uid://dvcx5kbh8t2hx"
-EOSGRuntime="*uid://7saywdx0ipep"
-HPlatform="*uid://yl2muvqrdiud"
-HAuth="*uid://786t1jiowvvg"
-HAchievements="*uid://bis404dty5u5c"
-HFriends="*uid://uumqbey8ji5t"
-HStats="*uid://dbckdip83oone"
-HLeaderboards="*uid://b06khhf20mplm"
-HLobbies="*uid://6iqvm33q0tb1"
-HP2P="*uid://u6ae5fpm6l8q"
 HSessions="*uid://bieh2rxxahuu2"
+GDSync="*uid://c5knfrsu7nic0"
 
 [dotnet]
 
@@ -35,7 +31,7 @@ project/assembly_name="RFSCL Game"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/epic-online-services-godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/GD-Sync-a90c4dc2f5fb29a1b07ec5e96fe2cb6a189e76b9/GD-Sync-a90c4dc2f5fb29a1b07ec5e96fe2cb6a189e76b9/addons/GD-Sync/plugin.cfg", "res://addons/GD-Sync/plugin.cfg")
 
 [file_customization]
 
