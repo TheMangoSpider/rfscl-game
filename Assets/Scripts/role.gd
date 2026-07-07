@@ -56,16 +56,32 @@ func equip_tool(tool: Tool) -> void:
 	%ToolHolder.add_child(tool_node)
 
 func pickup(pickupable: Pickupable) -> void:
-	if held_item:
+	#if multiplayer.is_server():
+		#_do_pickup.rpc(get_parent().name, pickupable.get_path() if pickupable else ^"")
+	#else:
+		#_do_pickup.rpc_id(1, get_parent().name, pickupable.get_path() if pickupable else ^"")
+	var pickupable_path = pickupable.get_path() if pickupable else ^""
+	_do_pickup.rpc(get_parent().name, pickupable_path)
+
+@rpc("any_peer", "call_local")
+func _do_pickup(player_id: String, pickupable_path: NodePath):
+	print("do_pickup called, player_id: ", player_id, " pickupable_path: ", pickupable_path)
+	var player = get_tree().current_scene.get_node(player_id)
+	var role = player.get_node("Role")
+	var pickupable = get_node_or_null(pickupable_path)
+	var item_holder = role.get_node("%ItemHolder")
+	print("player: ", player, " role: ", role, " pickupable: ", pickupable)
+	
+	if role.held_item:
 		#drop held item by making its parent the world and not player
-		held_item.reparent(get_tree().current_scene)
-		held_item.drop_visuals(get_parent().global_position + (-get_parent().global_basis.z * 1.0))
-		held_item = null
+		role.held_item.reparent(get_tree().current_scene)
+		role.held_item.drop_visuals(player.global_position + (-player.global_basis.z * 1.0))
+		role.held_item = null
 	if pickupable:
 		pickupable.pickup_visuals()
-		pickupable.reparent(%ItemHolder)
+		pickupable.reparent(item_holder)
 		pickupable.position = Vector3.ZERO
-		held_item = pickupable
+		role.held_item = pickupable
 
 func get_raycast_target() -> Pickupable:
 	var space = %Camera3D.get_world_3d().direct_space_state

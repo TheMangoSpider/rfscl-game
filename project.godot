@@ -11,17 +11,31 @@ config_version=5
 [application]
 
 config/name="RFSCL Game"
-run/main_scene="uid://oj3blpxqf1bl"
+run/main_scene="uid://d1yua8ujnba54"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 NetworkManager="*uid://dvcx5kbh8t2hx"
+EOSGRuntime="*uid://7saywdx0ipep"
+HPlatform="*uid://yl2muvqrdiud"
+HAuth="*uid://786t1jiowvvg"
+HAchievements="*uid://bis404dty5u5c"
+HFriends="*uid://uumqbey8ji5t"
+HStats="*uid://dbckdip83oone"
+HLeaderboards="*uid://b06khhf20mplm"
+HLobbies="*uid://6iqvm33q0tb1"
+HP2P="*uid://u6ae5fpm6l8q"
+HSessions="*uid://bieh2rxxahuu2"
 
 [dotnet]
 
 project/assembly_name="RFSCL Game"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/epic-online-services-godot/plugin.cfg")
 
 [file_customization]
 

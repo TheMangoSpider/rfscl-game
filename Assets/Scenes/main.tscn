@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bnqc7mdlu2gxt" path="res://Assets/Scenes/fish.tscn" id="7_cm4kb"]
 [ext_resource type="PackedScene" uid="uid://rujkp37cwyyl" path="res://Assets/Scenes/wood_mill.tscn" id="8_f8o6k"]
 [ext_resource type="PackedScene" uid="uid://bn71diykav5nv" path="res://Assets/Scenes/tree.tscn" id="8_jn1ar"]
+[ext_resource type="PackedScene" uid="uid://bwivi5drc5kq3" path="res://Assets/Scenes/rock_drop.tscn" id="8_mmcat"]
+[ext_resource type="PackedScene" uid="uid://frmnhx248c0i" path="res://Assets/Scenes/tree_drop.tscn" id="9_gqqgi"]
+[ext_resource type="Script" uid="uid://bsntar5jq8sec" path="res://Assets/Scripts/pickaxe.gd" id="9_ps118"]
+[ext_resource type="Script" uid="uid://b3yr5h34wxyx4" path="res://Assets/Scripts/axe.gd" id="10_l3epp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,6 +26,18 @@ background_mode = 2
 sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_ps118"]
+script = ExtResource("9_ps118")
+metadata/_custom_type_script = "uid://bsntar5jq8sec"
+
+[sub_resource type="Resource" id="Resource_mmcat"]
+script = ExtResource("10_l3epp")
+metadata/_custom_type_script = "uid://b3yr5h34wxyx4"
+
+[sub_resource type="Resource" id="Resource_0er3b"]
+script = ExtResource("10_l3epp")
+metadata/_custom_type_script = "uid://b3yr5h34wxyx4"
 
 [node name="Main" type="Node3D" unique_id=507080638]
 script = ExtResource("1_4357x")
@@ -58,15 +74,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.32344, -9.571605, 0)
 
 [node name="Rock" parent="." unique_id=74819402 instance=ExtResource("6_jn1ar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.804776, -13.468501)
+health = 1
+drop = ExtResource("8_mmcat")
+toolType = SubResource("Resource_ps118")
 
 [node name="Tree" parent="." unique_id=121466357 instance=ExtResource("8_jn1ar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.804776, 0)
+health = 1
+drop = ExtResource("9_gqqgi")
+toolType = SubResource("Resource_mmcat")
 
 [node name="Tree2" parent="." unique_id=1119581286 instance=ExtResource("8_jn1ar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.432373, 3.2202833, 0)
+health = 1
+drop = ExtResource("9_gqqgi")
+toolType = SubResource("Resource_0er3b")
 
 [node name="Tree3" parent="." unique_id=1865243873 instance=ExtResource("8_jn1ar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.192113, 2.7085598, -17.207466)
+health = 1
+drop = ExtResource("9_gqqgi")
+toolType = SubResource("Resource_mmcat")
 
 [node name="wood_mill" parent="." unique_id=1514472818 instance=ExtResource("8_f8o6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.848276, 3.8507729, 0)

@@ -142,12 +142,6 @@ func _handle_underwater_physics(delta) -> void:
 		velocity.y = lerp(velocity.y, swim_up_speed, 8.0 * delta)
 
 func _physics_process(delta):
-	if is_multiplayer_authority():
-		if Engine.get_physics_frames() % 60 == 0:  # print every second
-			print("my position: ", position)
-	else:
-		if Engine.get_physics_frames() % 60 == 0:
-			print("other player position: ", position)
 	if not is_multiplayer_authority():
 		return
 	
