@@ -12,8 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://frmnhx248c0i" path="res://Assets/Scenes/tree_drop.tscn" id="9_gqqgi"]
 [ext_resource type="Script" uid="uid://bsntar5jq8sec" path="res://Assets/Scripts/pickaxe.gd" id="9_ps118"]
 [ext_resource type="Script" uid="uid://b3yr5h34wxyx4" path="res://Assets/Scripts/axe.gd" id="10_l3epp"]
-[ext_resource type="PackedScene" uid="uid://1t31k7ibo7w8" path="res://seed_packet.tscn" id="13_ps118"]
-[ext_resource type="PackedScene" uid="uid://bxj311mi0dab" path="res://Assets/Scenes/pumpkin.tscn" id="14_actg8"]
+[ext_resource type="PackedScene" uid="uid://1t31k7ibo7w8" path="res://Assets/Scenes/seed_packet.tscn" id="13_ps118"]
+[ext_resource type="PackedScene" uid="uid://btk3q1btfpi5" path="res://Assets/Models/Meshes/Crops/wheat/wheat_1.glb" id="14_43wm7"]
+[ext_resource type="PackedScene" uid="uid://bvkdfyvp3kd6c" path="res://Assets/Models/Meshes/Crops/wheat/wheat_2.glb" id="15_jiurh"]
+[ext_resource type="PackedScene" uid="uid://4cjh51nyxwmq" path="res://Assets/Models/Meshes/Crops/wheat/wheat_3.glb" id="16_rmhnv"]
+[ext_resource type="PackedScene" uid="uid://cmkbeibo8a04q" path="res://Assets/Scenes/wheat.tscn" id="17_jiurh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -103,7 +106,8 @@ spawn_path = NodePath("..")
 
 [node name="SeedPacket" parent="." unique_id=660474151 instance=ExtResource("13_ps118")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.949547, 7.512583, 0)
-crop_scene = ExtResource("14_actg8")
+growth_stages = Array[PackedScene]([ExtResource("14_43wm7"), ExtResource("15_jiurh"), ExtResource("16_rmhnv")])
+result = ExtResource("17_jiurh")
 
 [node name="tree_drop" parent="." unique_id=314150267 instance=ExtResource("9_gqqgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.288834, 6.4429235, 0)

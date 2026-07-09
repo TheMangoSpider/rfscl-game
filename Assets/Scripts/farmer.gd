@@ -82,7 +82,7 @@ func try_plant():
 	for area in feet_area.get_overlapping_areas():
 		var tile = area.get_parent()
 		if tile is FarmTile and not tile.is_planted:
-			tile.plant(held_item.crop_scene)
+			tile.plant(held_item)
 			held_item.uses -= 1
 			plant_cooldown = plant_rate
 			if held_item.uses <= 0:

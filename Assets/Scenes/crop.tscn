@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxj311mi0dab"]
+
+[ext_resource type="Script" uid="uid://cxshhd7eghduy" path="res://Assets/Scripts/crop.gd" id="1_mt0l5"]
+
+[node name="Crop" type="Node3D" unique_id=1517490574]
+script = ExtResource("1_mt0l5")

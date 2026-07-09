@@ -3,10 +3,13 @@ extends Node3D
 
 var is_planted := false
 
-func plant(crop: PackedScene):
+func plant(seed: SeedPacket):
 	if is_planted:
 		return
 	is_planted = true
-	var crop_instance = crop.instantiate()
-	get_tree().current_scene.add_child(crop_instance)
-	crop_instance.global_position = global_position
+	var crop = preload("res://Assets/Scenes/crop.tscn").instantiate()
+	crop.growth_stages = seed.growth_stages.duplicate()
+	crop.growth_time = seed.growth_time
+	crop.result = seed.result
+	get_tree().current_scene.add_child(crop)
+	crop.global_position = global_position
