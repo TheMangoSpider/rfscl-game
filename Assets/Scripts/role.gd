@@ -28,8 +28,8 @@ func _unhandled_input(event):
 		var target = get_raycast_target()
 		if target is Pickupable:
 			pickup(target)
-		elif held_item:
-			pickup(null)
+	if event.is_action_pressed("drop") && held_item:
+		pickup(null)
 
 func _interact():
 	tools[active_tool].use()

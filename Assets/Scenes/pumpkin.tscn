@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bxj311mi0dab"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drfuh"]
+albedo_color = Color(0.82421875, 0.47106838, 0.12878418, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dqrix"]
+material = SubResource("StandardMaterial3D_drfuh")
+
+[node name="Pumpkin" type="Node3D" unique_id=1517490574]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=731364809]
+mesh = SubResource("SphereMesh_dqrix")

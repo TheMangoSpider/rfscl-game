@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cpaxnc6lw1gut"]
 
 [ext_resource type="Texture2D" uid="uid://bav4l0vdu46ce" path="res://Assets/2DAssets/farmland.png" id="1_3kep4"]
+[ext_resource type="Script" uid="uid://b34x45mst0qo5" path="res://Assets/Scripts/farm_tile.gd" id="1_qs10n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3kep4"]
 size = Vector3(1, 0.1, 1)
 
 [node name="FarmTile" type="Node3D" unique_id=1913982721]
+script = ExtResource("1_qs10n")
 
 [node name="Decal" type="Decal" parent="." unique_id=1988450986]
 size = Vector3(1, 10, 1)

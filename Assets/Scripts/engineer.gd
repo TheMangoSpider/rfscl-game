@@ -51,12 +51,13 @@ func _process(delta: float) -> void:
 func _unhandled_input(event):
 	if not get_parent().is_multiplayer_authority():
 		return
-	super._unhandled_input(event)
-	if event.is_action_pressed("menu") and tools[active_tool] is HammerTool:
+	if event.is_action_pressed("interact") and tools[active_tool] is HammerTool:
 		if %BuildingWheel.visible:
 			%BuildingWheel.close()
 		else:
 			%BuildingWheel.open()
+	else:
+		super._unhandled_input(event)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and not %BuildingWheel.visible:
 			tools[active_tool].use()

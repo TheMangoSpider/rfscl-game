@@ -6,6 +6,9 @@ extends Role
 @export var farm_tile_preview_scene: PackedScene
 var preview_tile: Node3D
 
+var plant_cooldown := 0.0
+@export var plant_rate := 0.5
+
 func _ready() -> void:
 	var id = get_parent().name.to_int()
 	if id > 0 and id != multiplayer.get_unique_id():
@@ -20,6 +23,12 @@ func _process(delta: float) -> void:
 	if not get_parent().is_multiplayer_authority():
 		return
 	super._process(delta)
+	
+	plant_cooldown -= delta
+	
+	if Input.is_action_pressed("interact") and held_item is SeedPacket:
+		try_plant()
+	
 	# tile placement highlight
 	if tools[active_tool] is HoeTool:
 		var space = %Camera3D.get_world_3d().direct_space_state
@@ -62,3 +71,18 @@ func place_tile():
 	var tile = farm_tile_scene.instantiate()
 	get_tree().current_scene.add_child(tile)
 	tile.global_position = preview_tile.global_position
+
+func try_plant():
+	if plant_cooldown > 0:
+		return
+	var feet_area = get_parent().get_node("FeetArea")
+	for area in feet_area.get_overlapping_areas():
+		var tile = area.get_parent()
+		if tile is FarmTile and not tile.is_planted:
+			tile.plant(held_item.crop_scene)
+			held_item.uses -= 1
+			plant_cooldown = plant_rate
+			if held_item.uses <= 0:
+				held_item.queue_free()
+				held_item = null
+			break

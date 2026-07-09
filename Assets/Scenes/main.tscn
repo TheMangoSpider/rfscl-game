@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cn1lwjj5wevs4" path="res://Assets/Scenes/water.tscn" id="4_bxpsk"]
 [ext_resource type="PackedScene" uid="uid://5bfsi13k42a3" path="res://Assets/Scenes/rock.tscn" id="6_jn1ar"]
 [ext_resource type="PackedScene" uid="uid://bnqc7mdlu2gxt" path="res://Assets/Scenes/fish.tscn" id="7_cm4kb"]
-[ext_resource type="PackedScene" uid="uid://rujkp37cwyyl" path="res://Assets/Scenes/wood_mill.tscn" id="8_f8o6k"]
 [ext_resource type="PackedScene" uid="uid://bn71diykav5nv" path="res://Assets/Scenes/tree.tscn" id="8_jn1ar"]
 [ext_resource type="PackedScene" uid="uid://bwivi5drc5kq3" path="res://Assets/Scenes/rock_drop.tscn" id="8_mmcat"]
 [ext_resource type="PackedScene" uid="uid://frmnhx248c0i" path="res://Assets/Scenes/tree_drop.tscn" id="9_gqqgi"]
 [ext_resource type="Script" uid="uid://bsntar5jq8sec" path="res://Assets/Scripts/pickaxe.gd" id="9_ps118"]
 [ext_resource type="Script" uid="uid://b3yr5h34wxyx4" path="res://Assets/Scripts/axe.gd" id="10_l3epp"]
+[ext_resource type="PackedScene" uid="uid://1t31k7ibo7w8" path="res://seed_packet.tscn" id="13_ps118"]
+[ext_resource type="PackedScene" uid="uid://bxj311mi0dab" path="res://Assets/Scenes/pumpkin.tscn" id="14_actg8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -96,9 +97,13 @@ health = 1
 drop = ExtResource("9_gqqgi")
 toolType = SubResource("Resource_mmcat")
 
-[node name="wood_mill" parent="." unique_id=1514472818 instance=ExtResource("8_f8o6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.848276, 3.8507729, 0)
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=883468003]
 _spawnable_scenes = PackedStringArray("uid://b56i0q2h2jc4n")
 spawn_path = NodePath("..")
+
+[node name="SeedPacket" parent="." unique_id=660474151 instance=ExtResource("13_ps118")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.949547, 7.512583, 0)
+crop_scene = ExtResource("14_actg8")
+
+[node name="tree_drop" parent="." unique_id=314150267 instance=ExtResource("9_gqqgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.288834, 6.4429235, 0)
