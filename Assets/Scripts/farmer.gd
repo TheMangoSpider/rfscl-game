@@ -68,6 +68,9 @@ func _setup_preview():
 func place_tile():
 	if not preview_tile.visible:
 		return
+	if preview_tile.deplant:
+		preview_tile.curr_tile.queue_free()
+		return
 	var tile = farm_tile_scene.instantiate()
 	get_tree().current_scene.add_child(tile)
 	tile.global_position = preview_tile.global_position
