@@ -18,7 +18,8 @@ script = ExtResource("1_c2nf1")
 mesh = SubResource("PlaneMesh_c2nf1")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2060451587]
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2071777979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011768341, -8.059431, 0.014831543)

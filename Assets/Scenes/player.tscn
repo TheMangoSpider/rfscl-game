@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bygmro880yy4q" path="res://Assets/Scripts/player.gd" id="1_6cd4h"]
 [ext_resource type="PackedScene" uid="uid://y3psxka05dcu" path="res://Assets/Models/disguise-glasses.glb" id="2_7dd06"]
-[ext_resource type="Script" uid="uid://dh5s3x03orfk8" path="res://Assets/Scripts/farmer.gd" id="3_gw2a5"]
-[ext_resource type="Resource" uid="uid://bbeqkpy23ulrx" path="res://Assets/Resources/Roles/farmer.tres" id="4_br2ol"]
-[ext_resource type="PackedScene" uid="uid://cpaxnc6lw1gut" path="res://Assets/Scenes/farm_tile.tscn" id="5_4ndhi"]
+[ext_resource type="Script" uid="uid://dh5s3x03orfk8" path="res://Assets/Scripts/farmer.gd" id="3_br2ol"]
+[ext_resource type="Resource" uid="uid://bbeqkpy23ulrx" path="res://Assets/Resources/Roles/farmer.tres" id="4_4ndhi"]
+[ext_resource type="PackedScene" uid="uid://cpaxnc6lw1gut" path="res://Assets/Scenes/farm_tile.tscn" id="5_u0ysh"]
 [ext_resource type="Resource" uid="uid://ddeuya7w427r0" path="res://Assets/Resources/Roles/hand.tres" id="5_w3t24"]
 [ext_resource type="PackedScene" uid="uid://dow2cxcl477n0" path="res://Assets/Scenes/building_wheel.tscn" id="6_w3t24"]
 [ext_resource type="PackedScene" uid="uid://vhqyo0yrxvtf" path="res://Assets/Scenes/farm_tile_preview.tscn" id="8_xv74q"]
@@ -27,10 +27,11 @@ properties/1/replication_mode = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_dqrix"]
 size = Vector3(0.5, 1, 0.5)
 
-[node name="Player" type="CharacterBody3D" unique_id=1461998413]
+[node name="Player" type="CharacterBody3D" unique_id=1461998413 node_paths=PackedStringArray("underwater") groups=["Player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_6cd4h")
+underwater = NodePath("ColorRect")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=573363016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9764166, 0)
@@ -55,9 +56,9 @@ unique_name_in_owner = true
 cull_mask = 1048573
 
 [node name="Role" type="Node3D" parent="." unique_id=1831538631]
-script = ExtResource("3_gw2a5")
-hoe_tool = ExtResource("4_br2ol")
-farm_tile_scene = ExtResource("5_4ndhi")
+script = ExtResource("3_br2ol")
+hoe_tool = ExtResource("4_4ndhi")
+farm_tile_scene = ExtResource("5_u0ysh")
 farm_tile_preview_scene = ExtResource("8_xv74q")
 hand = ExtResource("5_w3t24")
 
@@ -84,12 +85,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0.25882354, 0.47058824, 0.3529412)
 
 [node name="StateSync" type="MultiplayerSynchronizer" parent="." unique_id=1988360941]
 replication_config = SubResource("SceneReplicationConfig_vy5gb")
 
 [node name="FeetArea" type="Area3D" parent="." unique_id=175065101]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FeetArea" unique_id=947284225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014953613, 0.12324524, 0)

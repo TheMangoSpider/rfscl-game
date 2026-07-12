@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://df0svoi7ffh4v" path="res://Assets/Scripts/seed_packet.gd" id="1_085er"]
 
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_dqrix"]
+[sub_resource type="PrismMesh" id="PrismMesh_lhvrc"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_dqrix"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gbxds"]
 
 [node name="SeedPacket" type="RigidBody3D" unique_id=802538603]
 collision_layer = 5
@@ -12,7 +12,13 @@ collision_mask = 5
 script = ExtResource("1_085er")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1426837905]
-mesh = SubResource("TubeTrailMesh_dqrix")
+mesh = SubResource("PrismMesh_lhvrc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=869606482]
-shape = SubResource("SphereShape3D_dqrix")
+shape = SubResource("BoxShape3D_gbxds")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1126773886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+text = "Press E to pick up"

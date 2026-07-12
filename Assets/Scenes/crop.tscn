@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://bxj311mi0dab"]
 
 [ext_resource type="Script" uid="uid://cxshhd7eghduy" path="res://Assets/Scripts/crop.gd" id="1_mt0l5"]
+[ext_resource type="PackedScene" uid="uid://cmkbeibo8a04q" path="res://Assets/Scenes/wheat.tscn" id="2_i44lu"]
 
-[node name="Crop" type="Node3D" unique_id=1517490574]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dqrix"]
+size = Vector3(1, 2.8286133, 1)
+
+[node name="Crop" type="Area3D" unique_id=1211116169]
 script = ExtResource("1_mt0l5")
+result = ExtResource("2_i44lu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=592097139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4143066, 0)
+shape = SubResource("BoxShape3D_dqrix")

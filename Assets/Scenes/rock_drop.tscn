@@ -25,3 +25,9 @@ mesh = SubResource("SphereMesh_a6uj4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=944934289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 shape = SubResource("SphereShape3D_imwhi")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1648272168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+text = "Press E to pick up"

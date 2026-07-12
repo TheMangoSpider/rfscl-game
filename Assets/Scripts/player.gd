@@ -34,7 +34,7 @@ var headbob_time := 0.0
 @export var uncapped_ground_accel := 11.0
 @export var uncapped_air_accel := 15.0
 
-@onready var underwater: ColorRect = $ColorRect
+@export var underwater: ColorRect
 
 var wish_dir := Vector3.ZERO
 

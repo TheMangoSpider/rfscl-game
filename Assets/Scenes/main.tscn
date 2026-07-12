@@ -65,13 +65,14 @@ mesh = ExtResource("1_a1fxm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/terrain1" unique_id=17132757]
 collision_layer = 4
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/terrain1/StaticBody3D" unique_id=1521635135]
 transform = Transform3D(1.0035434, 0, 0, 0, 1.0035434, 0, 0, 0, 1.0035434, 0, 0, 0)
 shape = ExtResource("2_e7jsf")
 
 [node name="Water" parent="." unique_id=1602249835 instance=ExtResource("4_bxpsk")]
-transform = Transform3D(268.35822, 0, 0, 0, 57.94575, 0, 0, 0, 407.9344, 0, 0, 0)
+transform = Transform3D(268.35822, 0, 0, 0, 57.94575, 0, 0, 0, 407.9344, 0.14654541, 1.5258789e-05, -0.03918457)
 
 [node name="Fish" parent="." unique_id=525937421 instance=ExtResource("7_cm4kb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.32344, -9.571605, 0)
@@ -107,6 +108,7 @@ spawn_path = NodePath("..")
 [node name="SeedPacket" parent="." unique_id=660474151 instance=ExtResource("13_ps118")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.949547, 7.512583, 0)
 growth_stages = Array[PackedScene]([ExtResource("14_43wm7"), ExtResource("15_jiurh"), ExtResource("16_rmhnv")])
+growth_time = 1.0
 result = ExtResource("17_jiurh")
 
 [node name="tree_drop" parent="." unique_id=314150267 instance=ExtResource("9_gqqgi")]

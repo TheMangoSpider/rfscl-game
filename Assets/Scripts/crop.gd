@@ -1,5 +1,5 @@
 class_name Crop
-extends Node3D
+extends Area3D
 
 @export var growth_stages: Array[PackedScene] = []
 @export var growth_time := 30.0

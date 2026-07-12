@@ -7,6 +7,7 @@ var tools : Array[Tool] = []
 var active_tool : int = 0
 var tool_node: Node3D
 var held_item: Node3D
+var last_highlighted: Node = null
 
 func _ready() -> void:
 	var id = get_parent().name.to_int()
@@ -20,14 +21,36 @@ func _process(delta: float) -> void:
 		return
 	if Input.is_action_just_pressed("switch"):
 		swap_tool()
+	
+	# Pickup text raycast
+	var target = get_raycast_target()
+	if target != last_highlighted:
+		if last_highlighted and is_instance_valid(last_highlighted):
+			var label = last_highlighted.get_node_or_null("Label3D")
+			if label:
+				label.visible = false
+		if target:
+			var label = target.get_node_or_null("Label3D")
+			if label:
+				label.visible = true
+		last_highlighted = target
 
 func _unhandled_input(event):
 	if not get_parent().is_multiplayer_authority():
 		return
 	if event.is_action_pressed("interact"):
+		print("interact pressed, target: ", get_raycast_target())
 		var target = get_raycast_target()
 		if target is Pickupable:
 			pickup(target)
+		elif target is Crop and target.curr_stage >= target.growth_stages.size() - 1:
+			var crop_result = target.result.instantiate()
+			crop_result.name = "harvest " + str(randi())
+			get_tree().current_scene.add_child(crop_result)
+			crop_result.global_position = target.global_position
+			target.queue_free()
+			await get_tree().process_frame
+			pickup(crop_result)
 	if event.is_action_pressed("drop") && held_item:
 		pickup(null)
 
@@ -56,10 +79,6 @@ func equip_tool(tool: Tool) -> void:
 	%ToolHolder.add_child(tool_node)
 
 func pickup(pickupable: Pickupable) -> void:
-	#if multiplayer.is_server():
-		#_do_pickup.rpc(get_parent().name, pickupable.get_path() if pickupable else ^"")
-	#else:
-		#_do_pickup.rpc_id(1, get_parent().name, pickupable.get_path() if pickupable else ^"")
 	var pickupable_path = pickupable.get_path() if pickupable else ^""
 	_do_pickup.rpc(get_parent().name, pickupable_path)
 
@@ -75,7 +94,7 @@ func _do_pickup(player_id: String, pickupable_path: NodePath):
 	if role.held_item:
 		#drop held item by making its parent the world and not player
 		role.held_item.reparent(get_tree().current_scene)
-		role.held_item.drop_visuals(player.global_position + (-player.global_basis.z * 1.0))
+		role.held_item.drop_visuals(get_drop_position(player))
 		role.held_item = null
 	if pickupable:
 		pickupable.pickup_visuals()
@@ -83,15 +102,36 @@ func _do_pickup(player_id: String, pickupable_path: NodePath):
 		pickupable.position = Vector3.ZERO
 		role.held_item = pickupable
 
-func get_raycast_target() -> Pickupable:
+func get_raycast_target() -> Node:
 	var space = %Camera3D.get_world_3d().direct_space_state
 	var ray = PhysicsRayQueryParameters3D.create(
 		%Camera3D.global_position,
-		%Camera3D.global_position + (-%Camera3D.global_basis.z * 2.0)
+		%Camera3D.global_position + (-%Camera3D.global_basis.z * 4.0)
 	)
+	ray.collision_mask = 0b11101111
+	ray.collide_with_areas = true
+	ray.collide_with_bodies = true
+	ray.exclude = [get_parent().get_rid()]
 	var result = space.intersect_ray(ray)
-	print("raycast result: ", result)
-	if result and result.collider is Pickupable:
-		print("hit: ", result.collider.name, " is pickupable: ", result.collider is Pickupable)
+	#print("raw hit: ", result.get("collider", "nothing"))
+	#print("raycast result: ", result)
+	if result and (result.collider is Pickupable or result.collider is Crop):
+		#print("hit: ", result.collider.name, " is pickupable: ", result.collider is Pickupable)
 		return result.collider
 	return null
+
+func get_drop_position(player: Node3D):
+	var drop_pos = player.global_position + (-player.global_basis.z * 1.0)
+	
+	#find ground
+	var space = player.get_world_3d().direct_space_state
+	var ray = PhysicsRayQueryParameters3D.create(
+		drop_pos + Vector3(0, 2, 0),
+		drop_pos + Vector3(0, -5, 0),
+		4
+	)
+	ray.exclude = [player.get_rid()]
+	var result = space.intersect_ray(ray)
+	if result:
+		return result.position + Vector3(0, 0.3, 0)
+	return drop_pos
