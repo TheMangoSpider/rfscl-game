@@ -91,6 +91,12 @@ func _do_pickup(player_id: String, pickupable_path: NodePath):
 	var item_holder = role.get_node("%ItemHolder")
 	print("player: ", player, " role: ", role, " pickupable: ", pickupable)
 	
+	#ensure that label is gone
+	if pickupable:
+		var label = pickupable.get_node_or_null("Label3D")
+		if label:
+			label.visible = false
+	
 	if role.held_item:
 		#drop held item by making its parent the world and not player
 		role.held_item.reparent(get_tree().current_scene)

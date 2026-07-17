@@ -7,3 +7,4 @@ extends Pickupable
 @export var growth_stages: Array[PackedScene] = []
 @export var growth_time := 30.0
 @export var result: PackedScene
+ 

@@ -28,3 +28,8 @@ func _process(delta: float) -> void:
 		time_since_last_growth = 0.0
 		curr_stage += 1
 		show_stage(curr_stage)
+
+# Destructor
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		get_parent().is_planted = false

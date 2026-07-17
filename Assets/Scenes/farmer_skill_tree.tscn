@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dk6vl35wkmard"]
+
+[ext_resource type="Script" uid="uid://uowewc44eims" path="res://Assets/Scripts/skill_tree.gd" id="1_y8ebs"]
+[ext_resource type="Script" uid="uid://cwgpgucouovb8" path="res://Assets/Scripts/speed_boost.gd" id="2_y8ebs"]
+
+[node name="FarmerSkillTree" type="Node" unique_id=114838639]
+script = ExtResource("1_y8ebs")
+
+[node name="SpeedBoost" type="Node" parent="." unique_id=410965370]
+script = ExtResource("2_y8ebs")

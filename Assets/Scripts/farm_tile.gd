@@ -11,5 +11,5 @@ func plant(seed: SeedPacket):
 	crop.growth_stages = seed.growth_stages.duplicate()
 	crop.growth_time = seed.growth_time
 	crop.result = seed.result
-	get_tree().current_scene.add_child(crop)
+	add_child(crop)
 	crop.global_position = global_position

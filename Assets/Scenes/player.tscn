@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://ddeuya7w427r0" path="res://Assets/Resources/Roles/hand.tres" id="5_w3t24"]
 [ext_resource type="PackedScene" uid="uid://dow2cxcl477n0" path="res://Assets/Scenes/building_wheel.tscn" id="6_w3t24"]
 [ext_resource type="PackedScene" uid="uid://vhqyo0yrxvtf" path="res://Assets/Scenes/farm_tile_preview.tscn" id="8_xv74q"]
+[ext_resource type="PackedScene" uid="uid://dk6vl35wkmard" path="res://Assets/Scenes/farmer_skill_tree.tscn" id="9_4ndhi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t1xgp"]
 height = 2.0551758
@@ -97,3 +98,5 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FeetArea" unique_id=947284225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014953613, 0.12324524, 0)
 shape = SubResource("BoxShape3D_dqrix")
+
+[node name="FarmerSkillTree" parent="." unique_id=114838639 instance=ExtResource("9_4ndhi")]
