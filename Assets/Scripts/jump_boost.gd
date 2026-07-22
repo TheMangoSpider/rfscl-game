@@ -1,6 +1,6 @@
-class_name SpeedBoost
+class_name JumpBoost
 extends Skill
 
 func apply(player: Node, role: Node):
-	player.walk_speed += 5.0
+	player.jump_vel += 5.0
 	player.sprint_speed += 5.0

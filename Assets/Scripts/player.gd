@@ -70,6 +70,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
 	
+	if event.is_action_pressed("menu"):
+		var skill_ui = $SkillTreeLayer/SkillTreeUI
+		if skill_ui.visible:
+			skill_ui.close()
+		else:
+			skill_ui.open()
+	
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):

@@ -1,4 +1,4 @@
-class_name SpeedBoost
+class_name SpeedBoost2
 extends Skill
 
 func apply(player: Node, role: Node):

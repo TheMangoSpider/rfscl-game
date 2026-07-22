@@ -2,9 +2,26 @@
 
 [ext_resource type="Script" uid="uid://uowewc44eims" path="res://Assets/Scripts/skill_tree.gd" id="1_y8ebs"]
 [ext_resource type="Script" uid="uid://cwgpgucouovb8" path="res://Assets/Scripts/speed_boost.gd" id="2_y8ebs"]
+[ext_resource type="Script" uid="uid://c72t4muxf27wj" path="res://Assets/Scripts/speed_boost2.gd" id="3_at2sd"]
+[ext_resource type="Script" uid="uid://ddjyicbq3vv48" path="res://Assets/Scripts/jump_boost.gd" id="4_w7ftb"]
+[ext_resource type="Script" uid="uid://dsm8ux4kne8e1" path="res://Assets/Scripts/jump_boost2.gd" id="5_2mumy"]
+[ext_resource type="Script" uid="uid://den8go6s7btub" path="res://Assets/Scripts/cool_boost.gd" id="6_y16q4"]
 
 [node name="FarmerSkillTree" type="Node" unique_id=114838639]
 script = ExtResource("1_y8ebs")
 
 [node name="SpeedBoost" type="Node" parent="." unique_id=410965370]
 script = ExtResource("2_y8ebs")
+
+[node name="SpeedBoost2" type="Node" parent="SpeedBoost" unique_id=1852044844]
+script = ExtResource("3_at2sd")
+
+[node name="JumpBoost" type="Node" parent="." unique_id=1838513525]
+script = ExtResource("4_w7ftb")
+
+[node name="JumpBoost2" type="Node" parent="JumpBoost" unique_id=92977722]
+script = ExtResource("5_2mumy")
+
+[node name="CoolBoost" type="Node" parent="JumpBoost/JumpBoost2" unique_id=212047648]
+script = ExtResource("6_y16q4")
+additional_requirements = Array[NodePath]([NodePath("../../../SpeedBoost/SpeedBoost2")])

@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dow2cxcl477n0" path="res://Assets/Scenes/building_wheel.tscn" id="6_w3t24"]
 [ext_resource type="PackedScene" uid="uid://vhqyo0yrxvtf" path="res://Assets/Scenes/farm_tile_preview.tscn" id="8_xv74q"]
 [ext_resource type="PackedScene" uid="uid://dk6vl35wkmard" path="res://Assets/Scenes/farmer_skill_tree.tscn" id="9_4ndhi"]
+[ext_resource type="Script" uid="uid://c3in4bfxkxhgo" path="res://Assets/Scripts/skill_tree_UI.gd" id="10_u0ysh"]
+[ext_resource type="Script" uid="uid://cp5im10ij6321" path="res://Assets/Scripts/skill_nodes.gd" id="11_2vgkr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t1xgp"]
 height = 2.0551758
@@ -27,6 +29,18 @@ properties/1/replication_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dqrix"]
 size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqrix"]
+bg_color = Color(0.1, 0.1, 0.1, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="Player" type="CharacterBody3D" unique_id=1461998413 node_paths=PackedStringArray("underwater") groups=["Player"]]
 collision_layer = 2
@@ -71,6 +85,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8313369, 0.6536449, -0.8934
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831, 0.654, -0.893)
 
+[node name="FarmerSkillTree" parent="Role" unique_id=114838639 instance=ExtResource("9_4ndhi")]
+
 [node name="BuildingWheelLayer" type="CanvasLayer" parent="." unique_id=754277227]
 
 [node name="BuildingWheel" parent="BuildingWheelLayer" unique_id=1229117648 instance=ExtResource("6_w3t24")]
@@ -99,4 +115,37 @@ input_ray_pickable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014953613, 0.12324524, 0)
 shape = SubResource("BoxShape3D_dqrix")
 
-[node name="FarmerSkillTree" parent="." unique_id=114838639 instance=ExtResource("9_4ndhi")]
+[node name="SkillTreeLayer" type="CanvasLayer" parent="." unique_id=64077166]
+
+[node name="DimRect" type="ColorRect" parent="SkillTreeLayer" unique_id=2018677967]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="SkillTreeUI" type="PanelContainer" parent="SkillTreeLayer" unique_id=1294004533]
+visible = false
+custom_minimum_size = Vector2(700, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqrix")
+script = ExtResource("10_u0ysh")
+
+[node name="SkillTreeContainer" type="ScrollContainer" parent="SkillTreeLayer/SkillTreeUI" unique_id=671258569]
+layout_mode = 2
+
+[node name="SkillNodes" type="Control" parent="SkillTreeLayer/SkillTreeUI/SkillTreeContainer" unique_id=773787788]
+layout_mode = 2
+script = ExtResource("11_2vgkr")
