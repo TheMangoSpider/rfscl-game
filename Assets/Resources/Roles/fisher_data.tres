@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RoleData" format=3 uid="uid://c0uqxtc0r5ikl"]
+
+[ext_resource type="Resource" uid="uid://cjbe1cikpy5o" path="res://Assets/Resources/Roles/hand.tres" id="1_730lp"]
+[ext_resource type="Script" uid="uid://ox87u24ytvtm" path="res://Assets/Scripts/fisher.gd" id="1_ltsnt"]
+[ext_resource type="Script" uid="uid://d0k7a65iivd4p" path="res://Assets/Scripts/role_data.gd" id="1_nhj1j"]
+[ext_resource type="PackedScene" uid="uid://bkwf4uf6v0bb1" path="res://Assets/Scenes/fisher_skill_tree.tscn" id="3_t1d6h"]
+[ext_resource type="Script" uid="uid://c6ugd0cirwk0o" path="res://Assets/Scripts/spear.gd" id="5_tonx3"]
+[ext_resource type="PackedScene" uid="uid://ddlenbxsle44w" path="res://Assets/Scenes/spear.tscn" id="6_j5x3l"]
+
+[sub_resource type="Resource" id="Resource_bt8kw"]
+script = ExtResource("5_tonx3")
+tool_scene = ExtResource("6_j5x3l")
+metadata/_custom_type_script = "uid://c6ugd0cirwk0o"
+
+[resource]
+script = ExtResource("1_nhj1j")
+role_script = ExtResource("1_ltsnt")
+skill_tree_scene = ExtResource("3_t1d6h")
+hand = ExtResource("1_730lp")
+spear_tool = SubResource("Resource_bt8kw")
+metadata/_custom_type_script = "uid://d0k7a65iivd4p"

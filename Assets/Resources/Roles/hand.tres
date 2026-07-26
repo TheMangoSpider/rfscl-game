@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Hand" format=3 uid="uid://ddeuya7w427r0"]
+[gd_resource type="Resource" script_class="Hand" format=3 uid="uid://cjbe1cikpy5o"]
 
-[ext_resource type="Script" uid="uid://gplod7rcur30" path="res://Assets/Scripts/hand.gd" id="1_7kc4e"]
-[ext_resource type="PackedScene" uid="uid://3rguhv28lgh2" path="res://Assets/Scenes/hand.tscn" id="2_ffvg8"]
+[ext_resource type="Script" uid="uid://gplod7rcur30" path="res://Assets/Scripts/hand.gd" id="1_221rf"]
+[ext_resource type="PackedScene" uid="uid://3rguhv28lgh2" path="res://Assets/Scenes/hand.tscn" id="2_off6r"]
 
 [resource]
-script = ExtResource("1_7kc4e")
-tool_scene = ExtResource("2_ffvg8")
+script = ExtResource("1_221rf")
+tool_scene = ExtResource("2_off6r")
 metadata/_custom_type_script = "uid://gplod7rcur30"

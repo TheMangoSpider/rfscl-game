@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bwpgaclttrinu"]
+
+[ext_resource type="Script" uid="uid://uowewc44eims" path="res://Assets/Scripts/skill_tree.gd" id="1_qtugp"]
+[ext_resource type="Script" uid="uid://cwgpgucouovb8" path="res://Assets/Scripts/speed_boost.gd" id="2_1u8du"]
+[ext_resource type="Script" uid="uid://c72t4muxf27wj" path="res://Assets/Scripts/speed_boost2.gd" id="3_lwfbs"]
+[ext_resource type="Script" uid="uid://ddjyicbq3vv48" path="res://Assets/Scripts/jump_boost.gd" id="4_6mxwo"]
+[ext_resource type="Script" uid="uid://dsm8ux4kne8e1" path="res://Assets/Scripts/jump_boost2.gd" id="5_qmd0k"]
+[ext_resource type="Script" uid="uid://den8go6s7btub" path="res://Assets/Scripts/cool_boost.gd" id="6_aewln"]
+
+[node name="FarmerSkillTree" type="Node" unique_id=114838639]
+script = ExtResource("1_qtugp")
+
+[node name="SpeedBoost" type="Node" parent="." unique_id=410965370]
+script = ExtResource("2_1u8du")
+
+[node name="SpeedBoost2" type="Node" parent="SpeedBoost" unique_id=1852044844]
+script = ExtResource("3_lwfbs")
+
+[node name="JumpBoost" type="Node" parent="." unique_id=1838513525]
+script = ExtResource("4_6mxwo")
+
+[node name="JumpBoost2" type="Node" parent="JumpBoost" unique_id=92977722]
+script = ExtResource("5_qmd0k")
+
+[node name="CoolBoost" type="Node" parent="JumpBoost/JumpBoost2" unique_id=212047648]
+script = ExtResource("6_aewln")
+additional_requirements = Array[NodePath]([NodePath("../../../SpeedBoost/SpeedBoost2")])
+
+[node name="Node" type="Node" parent="JumpBoost/JumpBoost2/CoolBoost" unique_id=1660904594]
+script = ExtResource("6_aewln")
+
+[node name="Node" type="Node" parent="JumpBoost/JumpBoost2/CoolBoost/Node" unique_id=948096974]
+script = ExtResource("6_aewln")
+
+[node name="Node" type="Node" parent="JumpBoost/JumpBoost2/CoolBoost/Node/Node" unique_id=771919744]
+script = ExtResource("6_aewln")

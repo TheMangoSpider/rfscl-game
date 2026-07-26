@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="KnifeTool" format=3 uid="uid://cidln5ry6yh0y"]
-
-[ext_resource type="Script" uid="uid://bve7kaoceq683" path="res://Assets/Scripts/knife.gd" id="1_vj8l6"]
-[ext_resource type="PackedScene" uid="uid://cy07ocn88n5m8" path="res://Assets/Scenes/knife.tscn" id="2_r8w1k"]
-
-[resource]
-script = ExtResource("1_vj8l6")
-tool_scene = ExtResource("2_r8w1k")
-metadata/_custom_type_script = "uid://bve7kaoceq683"

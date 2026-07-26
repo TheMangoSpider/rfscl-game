@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="HoeTool" format=3 uid="uid://bbeqkpy23ulrx"]
-
-[ext_resource type="Script" uid="uid://csdcqmhkolomh" path="res://Assets/Scripts/hoe.gd" id="1_3cn51"]
-[ext_resource type="PackedScene" uid="uid://cfmj3ic33bhgd" path="res://Assets/Scenes/hoe.tscn" id="2_xsktl"]
-
-[resource]
-script = ExtResource("1_3cn51")
-tool_scene = ExtResource("2_xsktl")
-metadata/_custom_type_script = "uid://csdcqmhkolomh"

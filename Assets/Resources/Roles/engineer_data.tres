@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="RoleData" format=3 uid="uid://big81mnmqqu5b"]
+
+[ext_resource type="Script" uid="uid://b3yr5h34wxyx4" path="res://Assets/Scripts/axe.gd" id="1_g1n1n"]
+[ext_resource type="Script" uid="uid://d0k7a65iivd4p" path="res://Assets/Scripts/role_data.gd" id="1_hce4b"]
+[ext_resource type="PackedScene" uid="uid://dgthcsds3hh03" path="res://Assets/Scenes/axe.tscn" id="2_jp7nn"]
+[ext_resource type="PackedScene" uid="uid://bfijndlmls0yk" path="res://Assets/Scenes/building_base.tscn" id="3_itx74"]
+[ext_resource type="PackedScene" uid="uid://vhqyo0yrxvtf" path="res://Assets/Scenes/farm_tile_preview.tscn" id="4_83jje"]
+[ext_resource type="Script" uid="uid://cap4tojj2h33q" path="res://Assets/Scripts/hammer.gd" id="5_ei8u6"]
+[ext_resource type="PackedScene" uid="uid://k21iuqf0o3m4" path="res://Assets/Scenes/hammer.tscn" id="6_d4t48"]
+[ext_resource type="Resource" uid="uid://cjbe1cikpy5o" path="res://Assets/Resources/Roles/hand.tres" id="7_d8wvt"]
+[ext_resource type="Script" uid="uid://bsntar5jq8sec" path="res://Assets/Scripts/pickaxe.gd" id="8_mxvxe"]
+[ext_resource type="PackedScene" uid="uid://dut5etu1mff3e" path="res://Assets/Scenes/pickaxe.tscn" id="9_l4xss"]
+[ext_resource type="Script" uid="uid://cv7dgkg26il4n" path="res://Assets/Scripts/engineer.gd" id="10_g31a6"]
+[ext_resource type="PackedScene" uid="uid://bjk4rx4cd0qn2" path="res://Assets/Scenes/engineer_skill_tree.tscn" id="12_g5e5x"]
+
+[sub_resource type="Resource" id="Resource_1jqvb"]
+script = ExtResource("1_g1n1n")
+tool_scene = ExtResource("2_jp7nn")
+metadata/_custom_type_script = "uid://b3yr5h34wxyx4"
+
+[sub_resource type="Resource" id="Resource_7onn6"]
+script = ExtResource("5_ei8u6")
+tool_scene = ExtResource("6_d4t48")
+metadata/_custom_type_script = "uid://cap4tojj2h33q"
+
+[sub_resource type="Resource" id="Resource_air1m"]
+script = ExtResource("8_mxvxe")
+tool_scene = ExtResource("9_l4xss")
+metadata/_custom_type_script = "uid://bsntar5jq8sec"
+
+[resource]
+script = ExtResource("1_hce4b")
+role_script = ExtResource("10_g31a6")
+skill_tree_scene = ExtResource("12_g5e5x")
+hand = ExtResource("7_d8wvt")
+axe_tool = SubResource("Resource_1jqvb")
+pickaxe_tool = SubResource("Resource_air1m")
+hammer_tool = SubResource("Resource_7onn6")
+build_base_scene = ExtResource("3_itx74")
+build_tile_preview_scene = ExtResource("4_83jje")
+metadata/_custom_type_script = "uid://d0k7a65iivd4p"

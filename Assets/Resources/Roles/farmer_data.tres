@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RoleData" format=3 uid="uid://b38skniouc63q"]
+
+[ext_resource type="PackedScene" uid="uid://vhqyo0yrxvtf" path="res://Assets/Scenes/farm_tile_preview.tscn" id="1_jrk4w"]
+[ext_resource type="PackedScene" uid="uid://cpaxnc6lw1gut" path="res://Assets/Scenes/farm_tile.tscn" id="2_ro5jo"]
+[ext_resource type="Resource" uid="uid://cjbe1cikpy5o" path="res://Assets/Resources/Roles/hand.tres" id="3_h2x8d"]
+[ext_resource type="Script" uid="uid://csdcqmhkolomh" path="res://Assets/Scripts/hoe.gd" id="5_fpkyd"]
+[ext_resource type="PackedScene" uid="uid://cfmj3ic33bhgd" path="res://Assets/Scenes/hoe.tscn" id="6_wcw2i"]
+[ext_resource type="Script" uid="uid://dh5s3x03orfk8" path="res://Assets/Scripts/farmer.gd" id="7_0huae"]
+[ext_resource type="Script" uid="uid://d0k7a65iivd4p" path="res://Assets/Scripts/role_data.gd" id="8_5ri80"]
+[ext_resource type="PackedScene" uid="uid://dk6vl35wkmard" path="res://Assets/Scenes/farmer_skill_tree.tscn" id="9_5k48o"]
+
+[sub_resource type="Resource" id="Resource_36w8d"]
+script = ExtResource("5_fpkyd")
+tool_scene = ExtResource("6_wcw2i")
+metadata/_custom_type_script = "uid://csdcqmhkolomh"
+
+[resource]
+script = ExtResource("8_5ri80")
+role_script = ExtResource("7_0huae")
+skill_tree_scene = ExtResource("9_5k48o")
+hand = ExtResource("3_h2x8d")
+hoe_tool = SubResource("Resource_36w8d")
+farm_tile_scene = ExtResource("2_ro5jo")
+farm_tile_preview_scene = ExtResource("1_jrk4w")
+metadata/_custom_type_script = "uid://d0k7a65iivd4p"

@@ -4,8 +4,7 @@ extends Role
 @export var knife_tool: KnifeTool
 
 func _ready() -> void:
-	var id = get_parent().name.to_int()
-	if id > 0 and id != multiplayer.get_unique_id():
+	if not _initialized:
 		return
 	
 	tools.append(knife_tool)

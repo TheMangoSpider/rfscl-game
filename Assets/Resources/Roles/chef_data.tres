@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RoleData" format=3 uid="uid://cyk3qsbq6cwdu"]
+
+[ext_resource type="Script" uid="uid://dja4qwywtq4jt" path="res://Assets/Scripts/chef.gd" id="1_ipog0"]
+[ext_resource type="Script" uid="uid://d0k7a65iivd4p" path="res://Assets/Scripts/role_data.gd" id="1_qvn7h"]
+[ext_resource type="Resource" uid="uid://cjbe1cikpy5o" path="res://Assets/Resources/Roles/hand.tres" id="1_uurbe"]
+[ext_resource type="Script" uid="uid://bve7kaoceq683" path="res://Assets/Scripts/knife.gd" id="2_mw1yf"]
+[ext_resource type="PackedScene" uid="uid://bwpgaclttrinu" path="res://Assets/Scenes/chef_skill_tree.tscn" id="3_lgmq1"]
+[ext_resource type="PackedScene" uid="uid://cy07ocn88n5m8" path="res://Assets/Scenes/knife.tscn" id="3_vhe22"]
+
+[sub_resource type="Resource" id="Resource_cjcb6"]
+script = ExtResource("2_mw1yf")
+tool_scene = ExtResource("3_vhe22")
+metadata/_custom_type_script = "uid://bve7kaoceq683"
+
+[resource]
+script = ExtResource("1_qvn7h")
+role_script = ExtResource("1_ipog0")
+skill_tree_scene = ExtResource("3_lgmq1")
+hand = ExtResource("1_uurbe")
+knife_tool = SubResource("Resource_cjcb6")
+metadata/_custom_type_script = "uid://d0k7a65iivd4p"

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="SpearTool" format=3 uid="uid://xobpgxiimsb2"]
-
-[ext_resource type="Script" uid="uid://c6ugd0cirwk0o" path="res://Assets/Scripts/spear.gd" id="1_aerc4"]
-[ext_resource type="PackedScene" uid="uid://ddlenbxsle44w" path="res://Assets/Scenes/spear.tscn" id="2_oeoka"]
-
-[resource]
-script = ExtResource("1_aerc4")
-tool_scene = ExtResource("2_oeoka")
-metadata/_custom_type_script = "uid://c6ugd0cirwk0o"

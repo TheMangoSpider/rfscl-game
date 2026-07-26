@@ -10,8 +10,7 @@ var plant_cooldown := 0.0
 @export var plant_rate := 0.5
 
 func _ready() -> void:
-	var id = get_parent().name.to_int()
-	if id > 0 and id != multiplayer.get_unique_id():
+	if not _initialized:
 		return
 	
 	tools.append(hoe_tool)

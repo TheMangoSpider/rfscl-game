@@ -9,9 +9,10 @@ var tool_node: Node3D
 var held_item: Node3D
 var last_highlighted: Node = null
 
+var _initialized := false
+
 func _ready() -> void:
-	var id = get_parent().name.to_int()
-	if id > 0 and id != multiplayer.get_unique_id():
+	if not _initialized:
 		return
 	
 	tools.append(hand)
@@ -66,6 +67,7 @@ func swap_tool():
 	equip_tool(tools[active_tool])
 
 func equip_tool(tool: Tool) -> void:
+	print("equipping: ", tool, " tool_scene: ", tool.tool_scene if tool else "tool is null")
 	if tool_node:
 		tool_node.queue_free()
 	tool_node = tool.tool_scene.instantiate()

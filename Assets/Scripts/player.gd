@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 var spawn_position:= Vector3(0, 5, 0)
+@export var selected_class := "Farmer"
 
 @export var look_sensitivity : float = 0.006
 @export var jump_vel := 6.0
@@ -38,16 +39,27 @@ var headbob_time := 0.0
 
 var wish_dir := Vector3.ZERO
 
+const ROLE_DATA = {
+	"Farmer": preload("res://Assets/Resources/Roles/farmer_data.tres"),
+	"Fisher": preload("res://Assets/Resources/Roles/fisher_data.tres"),
+	"Engineer": preload("res://Assets/Resources/Roles/engineer_data.tres"),
+	"Chef": preload("res://Assets/Resources/Roles/chef_data.tres"),
+}
+
 func _get_move_speed() -> float:
 	return sprint_speed if Input.is_action_pressed("sprint") else walk_speed
 
 func _ready():
-	print("=== PLAYER READY ===")
-	print("name: ", name)
-	print("my peer id: ", multiplayer.get_unique_id())
-	print("is authority: ", is_multiplayer_authority())
-	print("synchronizer authority: ", $StateSync.get_multiplayer_authority())
-	print("position: ", position)
+	call_deferred("_deferred_ready")
+
+func _deferred_ready():
+	print("selected_class: ", selected_class)
+	print("all selected classes: ", NetworkManager.selected_classes)
+	print("PLAYER READY START")
+	
+	var data = ROLE_DATA[selected_class]
+	apply_role($Role, data)
+	
 	if is_multiplayer_authority():
 		position = spawn_position
 		%Camera3D.make_current()
@@ -177,3 +189,39 @@ func _physics_process(delta):
 	#speed_label.text = "Speed: %d" % horizontal_velocity.length()
 	
 	move_and_slide()
+
+func apply_role(role_node: Node, data: RoleData) -> void:
+	print("APPLY ROLE START, data: ", data, " hand: ", data.hand if data else "null")
+	print("apply_role called, data: ", data)
+	print("data.hand: ", data.hand if data else "data is null")
+	print("data.role_script: ", data.role_script if data else "data is null")
+	role_node.set_script(data.role_script)
+	
+	role_node.hand = data.hand
+	
+	#fisher
+	if data.spear_tool:
+		role_node.spear_tool = data.spear_tool
+	
+	#farmer
+	if data.hoe_tool:
+		role_node.hoe_tool = data.hoe_tool
+		role_node.farm_tile_scene = data.farm_tile_scene
+		role_node.farm_tile_preview_scene = data.farm_tile_preview_scene
+	
+	#chef
+	if data.knife_tool:
+		role_node.knife_tool = data.knife_tool
+	
+	#engineer
+	if data.axe_tool:
+		role_node.axe_tool = data.axe_tool
+		role_node.pickaxe_tool = data.pickaxe_tool
+		role_node.hammer_tool = data.hammer_tool
+		role_node.build_base_scene = data.build_base_scene
+		role_node.build_tile_preview_scene = data.build_tile_preview_scene
+	
+	role_node._initialized = true 
+	role_node._ready()
+	var skill_tree = data.skill_tree_scene.instantiate()
+	role_node.add_child(skill_tree)

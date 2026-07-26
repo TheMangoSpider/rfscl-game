@@ -11,8 +11,7 @@ extends Role
 var preview_tile: Node3D
 
 func _ready() -> void:
-	var id = get_parent().name.to_int()
-	if id > 0 and id != multiplayer.get_unique_id():
+	if not _initialized:
 		return
 	
 	tools.append(axe_tool)

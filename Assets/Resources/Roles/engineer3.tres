@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="HammerTool" format=3 uid="uid://jvh5wg7c80y3"]
-
-[ext_resource type="Script" uid="uid://cap4tojj2h33q" path="res://Assets/Scripts/hammer.gd" id="1_eh0v4"]
-[ext_resource type="PackedScene" uid="uid://k21iuqf0o3m4" path="res://Assets/Scenes/hammer.tscn" id="2_m47mh"]
-
-[resource]
-script = ExtResource("1_eh0v4")
-tool_scene = ExtResource("2_m47mh")
-metadata/_custom_type_script = "uid://cap4tojj2h33q"
