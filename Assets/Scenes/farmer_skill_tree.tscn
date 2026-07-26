@@ -25,3 +25,12 @@ script = ExtResource("5_2mumy")
 [node name="CoolBoost" type="Node" parent="JumpBoost/JumpBoost2" unique_id=212047648]
 script = ExtResource("6_y16q4")
 additional_requirements = Array[NodePath]([NodePath("../../../SpeedBoost/SpeedBoost2")])
+
+[node name="Node" type="Node" parent="JumpBoost/JumpBoost2/CoolBoost" unique_id=1660904594]
+script = ExtResource("6_y16q4")
+
+[node name="Node" type="Node" parent="JumpBoost/JumpBoost2/CoolBoost/Node" unique_id=948096974]
+script = ExtResource("6_y16q4")
+
+[node name="Node" type="Node" parent="JumpBoost/JumpBoost2/CoolBoost/Node/Node" unique_id=771919744]
+script = ExtResource("6_y16q4")

@@ -4,6 +4,9 @@ extends Node
 var skill_points := 10
 
 func unlock_skill(skill: Skill):
+	if skill.is_active:
+		return
+	
 	if skill_points >= skill.cost and skill.can_unlock():
 		skill_points -= skill.cost
 		var role = get_parent()

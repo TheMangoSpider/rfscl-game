@@ -124,6 +124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.4)
 
 [node name="SkillTreeUI" type="PanelContainer" parent="SkillTreeLayer" unique_id=1294004533]
@@ -140,11 +141,14 @@ offset_right = 350.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dqrix")
 script = ExtResource("10_u0ysh")
 
 [node name="SkillTreeContainer" type="ScrollContainer" parent="SkillTreeLayer/SkillTreeUI" unique_id=671258569]
 layout_mode = 2
+mouse_filter = 0
+horizontal_scroll_mode = 0
 
 [node name="SkillNodes" type="Control" parent="SkillTreeLayer/SkillTreeUI/SkillTreeContainer" unique_id=773787788]
 layout_mode = 2

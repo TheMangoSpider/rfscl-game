@@ -70,6 +70,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
 	
+	# when skill tree open, only allow escape to close
+	if $SkillTreeLayer/SkillTreeUI.visible:
+		if event.is_action_pressed("ui_cancel"):
+			$SkillTreeLayer/SkillTreeUI.close()
+		return
+	
 	if event.is_action_pressed("menu"):
 		var skill_ui = $SkillTreeLayer/SkillTreeUI
 		if skill_ui.visible:
