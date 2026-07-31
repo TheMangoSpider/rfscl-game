@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cn1lwjj5wevs4" path="res://Assets/Scenes/water.tscn" id="4_bxpsk"]
 [ext_resource type="PackedScene" uid="uid://5bfsi13k42a3" path="res://Assets/Scenes/rock.tscn" id="6_jn1ar"]
 [ext_resource type="PackedScene" uid="uid://bnqc7mdlu2gxt" path="res://Assets/Scenes/fish.tscn" id="7_cm4kb"]
+[ext_resource type="PackedScene" uid="uid://j6eny3jrbju0" path="res://Assets/Scenes/fish_drop.tscn" id="7_qscjt"]
+[ext_resource type="Script" uid="uid://c6ugd0cirwk0o" path="res://Assets/Scripts/spear.gd" id="8_ccmul"]
 [ext_resource type="PackedScene" uid="uid://bn71diykav5nv" path="res://Assets/Scenes/tree.tscn" id="8_jn1ar"]
 [ext_resource type="PackedScene" uid="uid://bwivi5drc5kq3" path="res://Assets/Scenes/rock_drop.tscn" id="8_mmcat"]
 [ext_resource type="PackedScene" uid="uid://frmnhx248c0i" path="res://Assets/Scenes/tree_drop.tscn" id="9_gqqgi"]
@@ -30,6 +32,10 @@ background_mode = 2
 sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_ccmul"]
+script = ExtResource("8_ccmul")
+metadata/_custom_type_script = "uid://c6ugd0cirwk0o"
 
 [sub_resource type="Resource" id="Resource_ps118"]
 script = ExtResource("9_ps118")
@@ -75,7 +81,10 @@ shape = ExtResource("2_e7jsf")
 transform = Transform3D(268.35822, 0, 0, 0, 57.94575, 0, 0, 0, 407.9344, 0.14654541, 1.5258789e-05, -0.03918457)
 
 [node name="Fish" parent="." unique_id=525937421 instance=ExtResource("7_cm4kb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.32344, -9.571605, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.651566, -7.439433, -6.2350316)
+health = 1
+drop = ExtResource("7_qscjt")
+toolType = SubResource("Resource_ccmul")
 
 [node name="Rock" parent="." unique_id=74819402 instance=ExtResource("6_jn1ar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.804776, -13.468501)

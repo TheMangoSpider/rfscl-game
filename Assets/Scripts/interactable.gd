@@ -16,9 +16,18 @@ func interact(tool: Tool) -> void:
 	else:
 		_request_damage.rpc_id(1)
 
+func interact_other(tool: Node):
+	if not self is Fish:
+		return
+	
+	if multiplayer.is_server():
+		_take_damage()
+		print("hurt")
+	else:
+		_request_damage.rpc_id(1)
+
 func is_valid_tool(tool: Tool) -> bool:
 	return true
-
 
 @rpc("any_peer", "call_local")
 func _request_damage() -> void:

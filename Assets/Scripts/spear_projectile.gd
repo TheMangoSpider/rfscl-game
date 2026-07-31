@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Interactable:
-		body.interact(null)
+		body.interact_other(self)
 	freeze = true               
 	await get_tree().create_timer(0.1).timeout
 	queue_free()

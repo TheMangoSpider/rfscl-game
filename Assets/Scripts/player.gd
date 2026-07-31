@@ -73,6 +73,9 @@ func _deferred_ready():
 	else:
 		$BuildingWheelLayer.visible = false
 		$ColorRect.visible = false
+	
+	# call tree ui ready cause its no autocalled
+	$SkillTreeLayer/SkillTreeUI._ready()
 
 func _enter_tree() -> void:
 	print("enter tree, name: ", name, " to_int: ", name.to_int())
