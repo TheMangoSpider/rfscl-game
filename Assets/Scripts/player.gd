@@ -60,6 +60,9 @@ func _deferred_ready():
 	var data = ROLE_DATA[selected_class]
 	apply_role($Role, data)
 	
+	print("role script: ", $Role.get_script())
+	print("role has unhandled input: ", $Role.has_method("_unhandled_input"))
+	
 	if is_multiplayer_authority():
 		position = spawn_position
 		%Camera3D.make_current()
@@ -72,11 +75,11 @@ func _deferred_ready():
 		$ColorRect.visible = false
 
 func _enter_tree() -> void:
+	print("enter tree, name: ", name, " to_int: ", name.to_int())
 	var id = name.to_int()
 	if id > 0:
 		set_multiplayer_authority(id)
 		$StateSync.set_multiplayer_authority(id)
-	print("player ready, name: ", name, " authority: ", get_multiplayer_authority(), " is authority: ", is_multiplayer_authority(), " unique id: ", multiplayer.get_unique_id())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
@@ -105,6 +108,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			rotate_y(-event.relative.x * look_sensitivity)
 			%Camera3D.rotate_x(-event.relative.y * look_sensitivity)
 			%Camera3D.rotation.x = clamp(%Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	
+	$Role._unhandled_input(event)
 
 func _headbob_effect(delta):
 	headbob_time += delta * self.velocity.length()
@@ -225,3 +230,7 @@ func apply_role(role_node: Node, data: RoleData) -> void:
 	role_node._ready()
 	var skill_tree = data.skill_tree_scene.instantiate()
 	role_node.add_child(skill_tree)
+
+func _process(delta) -> void:
+	if is_multiplayer_authority():
+		$Role._process(delta)

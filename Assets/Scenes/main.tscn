@@ -102,7 +102,6 @@ drop = ExtResource("9_gqqgi")
 toolType = SubResource("Resource_mmcat")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=883468003]
-_spawnable_scenes = PackedStringArray("uid://b56i0q2h2jc4n")
 spawn_path = NodePath("..")
 
 [node name="SeedPacket" parent="." unique_id=660474151 instance=ExtResource("13_ps118")]

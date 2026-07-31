@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://b56i0q2h2jc4n"]
+
+[ext_resource type="Script" uid="uid://bygmro880yy4q" path="res://Assets/Scripts/player.gd" id="1_6cd4h"]
+[ext_resource type="PackedScene" uid="uid://y3psxka05dcu" path="res://Assets/Models/disguise-glasses.glb" id="2_7dd06"]
+[ext_resource type="PackedScene" uid="uid://dow2cxcl477n0" path="res://Assets/Scenes/building_wheel.tscn" id="6_w3t24"]
+[ext_resource type="Script" uid="uid://c3in4bfxkxhgo" path="res://Assets/Scripts/skill_tree_UI.gd" id="10_u0ysh"]
+[ext_resource type="Script" uid="uid://cp5im10ij6321" path="res://Assets/Scripts/skill_nodes.gd" id="11_2vgkr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t1xgp"]
+height = 2.0551758
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7dd06"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ecf78"]
+properties/0/path = NodePath(".:selected_class")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vy5gb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dqrix"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqrix"]
+bg_color = Color(0.1, 0.1, 0.1, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Player" type="CharacterBody3D" unique_id=1461998413 node_paths=PackedStringArray("underwater") groups=["Player"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_6cd4h")
+selected_class = null
+look_sensitivity = null
+jump_vel = null
+auto_bhop = null
+walk_speed = null
+sprint_speed = null
+ground_accel = null
+ground_decel = null
+ground_friction = null
+swim_up_speed = null
+underwater_gravity = null
+water_accel = null
+water_drag = null
+water_cap = null
+air_cap = null
+air_accel = null
+air_move_speed = null
+uncapped_speed = null
+uncapped_ground_accel = null
+uncapped_air_accel = null
+underwater = NodePath("ColorRect")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=573363016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9764166, 0)
+shape = SubResource("CapsuleShape3D_t1xgp")
+
+[node name="WorldModel" type="Node3D" parent="." unique_id=703469457]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldModel" unique_id=1323952834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_7dd06")
+
+[node name="disguise-glasses" parent="WorldModel" unique_id=1866897092 instance=ExtResource("2_7dd06")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, 1.5181895, -0.1228587)
+
+[node name="Head" type="Node3D" parent="." unique_id=425404819]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=427987213]
+unique_name_in_owner = true
+cull_mask = 1048573
+
+[node name="Role" type="Node3D" parent="." unique_id=1831538631]
+
+[node name="ToolHolder" type="Node3D" parent="Role" unique_id=1218978356]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8313369, 0.6536449, -0.8934616)
+
+[node name="ItemHolder" type="Node3D" parent="Role" unique_id=442580644]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831, 0.654, -0.893)
+
+[node name="BuildingWheelLayer" type="CanvasLayer" parent="." unique_id=754277227]
+
+[node name="BuildingWheel" parent="BuildingWheelLayer" unique_id=1229117648 instance=ExtResource("6_w3t24")]
+unique_name_in_owner = true
+
+[node name="SpawnSync" type="MultiplayerSynchronizer" parent="." unique_id=90856787]
+replication_config = SubResource("SceneReplicationConfig_ecf78")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1120130710]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.25882354, 0.47058824, 0.3529412)
+
+[node name="StateSync" type="MultiplayerSynchronizer" parent="." unique_id=1988360941]
+replication_config = SubResource("SceneReplicationConfig_vy5gb")
+
+[node name="FeetArea" type="Area3D" parent="." unique_id=175065101]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FeetArea" unique_id=947284225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014953613, 0.12324524, 0)
+shape = SubResource("BoxShape3D_dqrix")
+
+[node name="SkillTreeLayer" type="CanvasLayer" parent="." unique_id=64077166]
+
+[node name="DimRect" type="ColorRect" parent="SkillTreeLayer" unique_id=2018677967]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="SkillTreeUI" type="PanelContainer" parent="SkillTreeLayer" unique_id=1294004533]
+visible = false
+custom_minimum_size = Vector2(700, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqrix")
+script = ExtResource("10_u0ysh")
+
+[node name="SkillTreeContainer" type="ScrollContainer" parent="SkillTreeLayer/SkillTreeUI" unique_id=671258569]
+layout_mode = 2
+mouse_filter = 0
+horizontal_scroll_mode = 0
+
+[node name="SkillNodes" type="Control" parent="SkillTreeLayer/SkillTreeUI/SkillTreeContainer" unique_id=773787788]
+layout_mode = 2
+script = ExtResource("11_2vgkr")

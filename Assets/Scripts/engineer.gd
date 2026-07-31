@@ -78,6 +78,9 @@ func build():
 	tile.init()
 
 func _setup_preview():
+	if not get_parent().is_multiplayer_authority():
+		return
+	
 	preview_tile = build_tile_preview_scene.instantiate()
 	get_tree().current_scene.add_child(preview_tile)
 	var decal = preview_tile.get_node("Decal")
