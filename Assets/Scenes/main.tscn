@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bvkdfyvp3kd6c" path="res://Assets/Models/Meshes/Crops/wheat/wheat_2.glb" id="15_jiurh"]
 [ext_resource type="PackedScene" uid="uid://4cjh51nyxwmq" path="res://Assets/Models/Meshes/Crops/wheat/wheat_3.glb" id="16_rmhnv"]
 [ext_resource type="PackedScene" uid="uid://cmkbeibo8a04q" path="res://Assets/Scenes/wheat.tscn" id="17_jiurh"]
+[ext_resource type="PackedScene" uid="uid://cdh8y65u0rkvp" path="res://Assets/Scenes/customer.tscn" id="20_cun2r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -121,3 +122,28 @@ result = ExtResource("17_jiurh")
 
 [node name="tree_drop" parent="." unique_id=314150267 instance=ExtResource("9_gqqgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.288834, 6.4429235, 0)
+
+[node name="Customer" parent="." unique_id=914859413 instance=ExtResource("20_cun2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8562655, 3.2699194, -12.847491)
+collision_mask = 5
+item_pool = Array[String](["Rock"])
+
+[node name="Control" type="Control" parent="." unique_id=1097117570]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control" unique_id=993847310]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Money = 0"

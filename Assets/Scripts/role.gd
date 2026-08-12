@@ -52,6 +52,8 @@ func _unhandled_input(event):
 			target.queue_free()
 			await get_tree().process_frame
 			pickup(crop_result)
+		elif target is Customer and held_item:
+			target.sell(held_item)
 	if event.is_action_pressed("drop") && held_item:
 		pickup(null)
 
@@ -123,7 +125,7 @@ func get_raycast_target() -> Node:
 	var result = space.intersect_ray(ray)
 	#print("raw hit: ", result.get("collider", "nothing"))
 	#print("raycast result: ", result)
-	if result and (result.collider is Pickupable or result.collider is Crop):
+	if result and (result.collider is Pickupable or result.collider is Crop or result.collider is Customer):
 		#print("hit: ", result.collider.name, " is pickupable: ", result.collider is Pickupable)
 		return result.collider
 	return null

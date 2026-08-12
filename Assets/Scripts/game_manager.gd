@@ -3,6 +3,8 @@ extends Node
 @export var player_scene: PackedScene
 @onready var spawner: MultiplayerSpawner = $MultiplayerSpawner
 
+var money:= 0
+
 var spawn_positions := [
 	Vector3(0, 5, 0),
 	Vector3(3, 5, 0),
@@ -37,3 +39,8 @@ func _spawn_player_func(data: Array) -> Node:
 	player.selected_class = class_name_str
 	player.spawn_position = pos
 	return player
+
+@rpc("authority")
+func add_cash(amt: int):
+	money += amt
+	%Label.text = "Money = " + str(money)
